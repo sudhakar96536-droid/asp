@@ -1,0 +1,137 @@
+{
+  "MADHYA_PRADESH": {
+    "Sum_of_0_3": 2293,
+    "Sum_of_Total_Outwards": 3860,
+    "Percentage": "59%"
+  },
+  "TAMIL_NADU_UPCOUNTRY": {
+    "Sum_of_0_3": 1435,
+    "Sum_of_Total_Outwards": 2406,
+    "Percentage": "60%"
+  },
+  "ODISHA": {
+    "Sum_of_0_3": 589,
+    "Sum_of_Total_Outwards": 987,
+    "Percentage": "60%"
+  },
+  "ASSAM": {
+    "Sum_of_0_3": 304,
+    "Sum_of_Total_Outwards": 491,
+    "Percentage": "62%"
+  },
+  "JHARKHAND": {
+    "Sum_of_0_3": 488,
+    "Sum_of_Total_Outwards": 787,
+    "Percentage": "62%"
+  },
+  "GOA": {
+    "Sum_of_0_3": 55,
+    "Sum_of_Total_Outwards": 88,
+    "Percentage": "63%"
+  },
+  "HARYANA": {
+    "Sum_of_0_3": 680,
+    "Sum_of_Total_Outwards": 1071,
+    "Percentage": "63%"
+  },
+  "MAHARASHTRA_MUMBAI": {
+    "Sum_of_0_3": 1535,
+    "Sum_of_Total_Outwards": 2404,
+    "Percentage": "64%"
+  },
+  "KARNATAKA": {
+    "Sum_of_0_3": 2074,
+    "Sum_of_Total_Outwards": 3167,
+    "Percentage": "65%"
+  },
+  "TELANGANA": {
+    "Sum_of_0_3": 743,
+    "Sum_of_Total_Outwards": 1074,
+    "Percentage": "69%"
+  },
+  "ANDHRA_PRADESH": {
+    "Sum_of_0_3": 788,
+    "Sum_of_Total_Outwards": 1120,
+    "Percentage": "70%"
+  },
+  "CHHATTISGARH": {
+    "Sum_of_0_3": 1438,
+    "Sum_of_Total_Outwards": 2015,
+    "Percentage": "71%"
+  },
+  "GUJARAT": {
+    "Sum_of_0_3": 1906,
+    "Sum_of_Total_Outwards": 2664,
+    "Percentage": "72%"
+  },
+  "JAMMU_AND_KASHMIR": {
+    "Sum_of_0_3": 488,
+    "Sum_of_Total_Outwards": 678,
+    "Percentage": "72%"
+  },
+  "MAHARASHTRA_NAGPUR": {
+    "Sum_of_0_3": 1317,
+    "Sum_of_Total_Outwards": 1826,
+    "Percentage": "72%"
+  },
+  "PUNJAB": {
+    "Sum_of_0_3": 1483,
+    "Sum_of_Total_Outwards": 2025,
+    "Percentage": "73%"
+  },
+  "PUDUCHERRY": {
+    "Sum_of_0_3": 697,
+    "Sum_of_Total_Outwards": 948,
+    "Percentage": "74%"
+  },
+  "KERALA": {
+    "Sum_of_0_3": 2100,
+    "Sum_of_Total_Outwards": 2827,
+    "Percentage": "74%"
+  },
+  "MAHARASHTRA_PUNE": {
+    "Sum_of_0_3": 1542,
+    "Sum_of_Total_Outwards": 2064,
+    "Percentage": "75%"
+  },
+  "RAJASTHAN": {
+    "Sum_of_0_3": 3203,
+    "Sum_of_Total_Outwards": 4213,
+    "Percentage": "76%"
+  },
+  "CHENNAI_CENTERS": {
+    "Sum_of_0_3": 2084,
+    "Sum_of_Total_Outwards": 2730,
+    "Percentage": "76%"
+  },
+  "UTTARAKHAND": {
+    "Sum_of_0_3": 706,
+    "Sum_of_Total_Outwards": 923,
+    "Percentage": "76%"
+  },
+  "BIHAR": {
+    "Sum_of_0_3": 1547,
+    "Sum_of_Total_Outwards": 1981,
+    "Percentage": "78%"
+  },
+  "UTTAR_PRADESH_GHAZIABAD": {
+    "Sum_of_0_3": 2452,
+    "Sum_of_Total_Outwards": 3089,
+    "Percentage": "79%"
+  },
+  "WEST_BENGAL": {
+    "Sum_of_0_3": 2840,
+    "Sum_of_Total_Outwards": 3479,
+    "Percentage": "82%"
+  },
+  "DELHI": {
+    "Sum_of_0_3": 2867,
+    "Sum_of_Total_Outwards": 3501,
+    "Percentage": "82%"
+  },
+  "UTTAR_PRADESH_LUCKNOW": {
+    "Sum_of_0_3": 4090,
+    "Sum_of_Total_Outwards": 4805,
+    "Percentage": "85%"
+  }
+}
