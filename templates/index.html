@@ -17,7 +17,6 @@
 }
 
 body{
-
     background:
     repeating-linear-gradient(
         135deg,
@@ -46,19 +45,16 @@ body{
 .header h1{
     font-size:24px;
     font-weight:bold;
-    letter-spacing:1px;
 }
 
 .header p{
     font-size:11px;
-    color:#d1d5db;
-    margin-top:4px;
+    color:#ccc;
 }
 
 .current-date{
-    font-size:14px;
+    font-size:13px;
     font-weight:bold;
-    color:white;
 }
 
 /* TITLE */
@@ -69,7 +65,7 @@ body{
     font-weight:bold;
 }
 
-/* ZONE GRID */
+/* ZONES */
 
 .zone-container{
     display:grid;
@@ -77,8 +73,6 @@ body{
     gap:8px;
     padding:10px;
 }
-
-/* ZONE CARD */
 
 .zone-card{
 
@@ -90,22 +84,10 @@ body{
 
     padding:10px;
 
-    position:relative;
-
-    backdrop-filter:blur(5px);
-
-    box-shadow:
-    0 0 10px rgba(255,255,255,0.05);
-
     cursor:pointer;
 
-    transition:0.3s;
+    position:relative;
 
-}
-
-.zone-card:hover{
-    transform:translateY(-3px);
-    border-color:white;
 }
 
 .rank{
@@ -121,46 +103,30 @@ body{
 }
 
 .zone-name{
-    font-size:16px;
-    font-weight:bold;
-    margin-top:12px;
-}
-
-.percent{
-    font-size:24px;
+    font-size:14px;
     font-weight:bold;
     margin-top:10px;
 }
 
-.stats{
+.percent{
+    font-size:22px;
+    font-weight:bold;
     margin-top:10px;
 }
 
 .stat-line{
-    margin-top:8px;
     font-size:9px;
-    color:#e5e7eb;
+    margin-top:6px;
+    color:#ddd;
 }
 
-/* OVERALL SUMMARY */
+/* SUMMARY */
 
 .summary{
-
     margin:10px;
-
-    background:rgba(255,255,255,0.06);
-
-    border:1px solid rgba(255,255,255,0.15);
-
-    border-radius:16px;
-
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
     padding:15px;
-
-}
-
-.summary h2{
-    font-size:18px;
-    margin-bottom:15px;
 }
 
 .summary-grid{
@@ -170,15 +136,14 @@ body{
 }
 
 .box{
-    background:rgba(255,255,255,0.06);
-    padding:12px;
+    background:rgba(255,255,255,0.05);
+    padding:10px;
     border-radius:12px;
-    border:1px solid rgba(255,255,255,0.08);
 }
 
 .box-title{
     font-size:10px;
-    color:#d1d5db;
+    color:#bbb;
 }
 
 .box-value{
@@ -187,21 +152,19 @@ body{
     margin-top:6px;
 }
 
-/* STATE SECTION */
+/* STATES */
 
 .state-section{
     margin:10px;
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
     padding:15px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:16px;
 }
 
 .state-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:15px;
 }
 
 .state-title{
@@ -210,9 +173,9 @@ body{
 }
 
 .overall-btn{
+    border:none;
     background:white;
     color:black;
-    border:none;
     padding:6px 12px;
     border-radius:20px;
     font-size:11px;
@@ -220,18 +183,17 @@ body{
     cursor:pointer;
 }
 
-/* STATUS SUMMARY */
+/* STATUS */
 
 .status-summary{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
     gap:10px;
-    margin-bottom:15px;
+    margin-top:15px;
 }
 
 .status-box{
     background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
     border-radius:12px;
     padding:10px;
     text-align:center;
@@ -239,11 +201,11 @@ body{
 
 .status-label{
     font-size:10px;
-    color:#9ca3af;
+    color:#aaa;
 }
 
 .status-value{
-    font-size:20px;
+    font-size:18px;
     font-weight:bold;
     margin-top:5px;
 }
@@ -254,17 +216,17 @@ body{
     display:flex;
     flex-direction:column;
     gap:8px;
+    margin-top:15px;
 }
 
 .state-card{
     background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
     border-radius:12px;
     padding:10px;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
+    cursor:pointer;
 }
 
 .state-left{
@@ -273,18 +235,18 @@ body{
 
 .state-rank{
     font-size:10px;
-    color:#9ca3af;
+    color:#999;
 }
 
 .state-name{
     font-size:13px;
     font-weight:bold;
-    margin-top:3px;
+    margin-top:4px;
 }
 
 .state-zone{
     font-size:9px;
-    color:#9ca3af;
+    color:#aaa;
     margin-top:3px;
 }
 
@@ -299,7 +261,68 @@ body{
 
 .state-data{
     font-size:9px;
-    color:#d1d5db;
+    color:#ddd;
+    margin-top:4px;
+    line-height:15px;
+}
+
+/* BRANCH SECTION */
+
+.branch-section{
+    margin:10px;
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
+    padding:15px;
+}
+
+.branch-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.branch-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.branch-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    padding:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.branch-left{
+    width:65%;
+}
+
+.branch-name{
+    font-size:12px;
+    font-weight:bold;
+}
+
+.branch-zone{
+    font-size:9px;
+    color:#aaa;
+    margin-top:4px;
+}
+
+.branch-right{
+    text-align:right;
+}
+
+.branch-percent{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.branch-data{
+    font-size:9px;
+    color:#ddd;
     margin-top:4px;
     line-height:15px;
 }
@@ -309,31 +332,19 @@ body{
 @media(max-width:600px){
 
     .zone-name{
-        font-size:13px;
+        font-size:11px;
     }
 
     .percent{
         font-size:18px;
     }
 
-    .stat-line{
-        font-size:8px;
-    }
-
-    .current-date{
-        font-size:11px;
-    }
-
     .state-name{
         font-size:11px;
     }
 
-    .state-percent{
-        font-size:15px;
-    }
-
-    .status-value{
-        font-size:16px;
+    .branch-name{
+        font-size:11px;
     }
 
 }
@@ -352,15 +363,11 @@ body{
 
             <h1>ZEBRONICS ASP</h1>
 
-            <p>
-                Zone Performance Dashboard
-            </p>
+            <p>Zone Performance Dashboard</p>
 
         </div>
 
-        <div class="current-date" id="currentDate">
-
-        </div>
+        <div class="current-date" id="currentDate"></div>
 
     </div>
 
@@ -370,12 +377,9 @@ body{
     Top Performing Zones
 </div>
 
-<div class="zone-container" id="zoneContainer">
-</div>
+<div class="zone-container" id="zoneContainer"></div>
 
 <div class="summary">
-
-    <h2>Overall Performance</h2>
 
     <div class="summary-grid">
 
@@ -431,6 +435,8 @@ body{
 
 </div>
 
+<!-- STATES -->
+
 <div class="state-section">
 
     <div class="state-header">
@@ -454,8 +460,7 @@ body{
                 TOTAL STATES
             </div>
 
-            <div class="status-value"
-            id="totalStates">
+            <div class="status-value" id="totalStates">
                 0
             </div>
 
@@ -464,12 +469,12 @@ body{
         <div class="status-box">
 
             <div class="status-label">
-                GOOD STATES
+                GREEN STATES
             </div>
 
             <div class="status-value"
-            id="goodStates"
-            style="color:#22c55e;">
+            style="color:#22c55e;"
+            id="goodStates">
                 0
             </div>
 
@@ -478,12 +483,12 @@ body{
         <div class="status-box">
 
             <div class="status-label">
-                BAD STATES
+                RED STATES
             </div>
 
             <div class="status-value"
-            id="badStates"
-            style="color:#ff4d4d;">
+            style="color:#ff4d4d;"
+            id="badStates">
                 0
             </div>
 
@@ -491,7 +496,19 @@ body{
 
     </div>
 
-    <div class="state-list" id="stateList">
+    <div class="state-list" id="stateList"></div>
+
+</div>
+
+<!-- BRANCHES -->
+
+<div class="branch-section">
+
+    <div class="branch-title" id="branchTitle">
+        Branch Details
+    </div>
+
+    <div class="branch-list" id="branchList">
 
     </div>
 
@@ -506,12 +523,10 @@ const today = new Date();
 const day = today.getDate();
 
 const monthNames = [
-    "January","February","March","April",
-    "May","June","July","August",
-    "September","October","November","December"
+"January","February","March","April",
+"May","June","July","August",
+"September","October","November","December"
 ];
-
-const month = monthNames[today.getMonth()];
 
 function getOrdinal(n){
 
@@ -519,34 +534,30 @@ function getOrdinal(n){
 
     switch(n % 10){
 
-        case 1: return "st";
-        case 2: return "nd";
-        case 3: return "rd";
-        default: return "th";
+        case 1:return "st";
+        case 2:return "nd";
+        case 3:return "rd";
+        default:return "th";
 
     }
 
 }
 
 document.getElementById("currentDate").innerText =
-`${day}${getOrdinal(day)} ${month}`;
+`${day}${getOrdinal(day)} ${monthNames[today.getMonth()]}`;
 
 let allStates = [];
+let allBranches = [];
 
-/* TOP ZONES */
+/* ZONES */
 
 fetch("{{ url_for('static', filename='json/top.json') }}")
 
-.then(response => response.json())
+.then(res=>res.json())
 
-.then(data => {
+.then(data=>{
 
-    const ranks = [
-        "🥇1",
-        "🥈2",
-        "🥉3",
-        "🏅4"
-    ];
+    const ranks = ["🥇1","🥈2","🥉3","🏅4"];
 
     const container =
     document.getElementById("zoneContainer");
@@ -567,7 +578,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
         const details = zone[1];
 
-        const percentColor =
+        const color =
         parseInt(details.Percentage) < 70
         ? "#ff4d4d"
         : "#22c55e";
@@ -586,32 +597,16 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
             </div>
 
             <div class="percent"
-            style="color:${percentColor};">
-
+            style="color:${color};">
                 ${details.Percentage}
-
             </div>
 
-            <div class="stats">
+            <div class="stat-line">
+                0-3 : ${details.Sum_of_0_3.toLocaleString()}
+            </div>
 
-                <div class="stat-line">
-
-                    0-3 :
-                    <b>
-                    ${details.Sum_of_0_3.toLocaleString()}
-                    </b>
-
-                </div>
-
-                <div class="stat-line">
-
-                    OUT :
-                    <b>
-                    ${details.Sum_of_Total_Outwards.toLocaleString()}
-                    </b>
-
-                </div>
-
+            <div class="stat-line">
+                OUT : ${details.Sum_of_Total_Outwards.toLocaleString()}
             </div>
 
         </div>
@@ -632,16 +627,10 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     overall.innerText =
     data.Grand_Total.Percentage;
 
-    if(parseInt(data.Grand_Total.Percentage) < 70){
-
-        overall.style.color = "#ff4d4d";
-
-    }
-    else{
-
-        overall.style.color = "#22c55e";
-
-    }
+    overall.style.color =
+    parseInt(data.Grand_Total.Percentage) < 70
+    ? "#ff4d4d"
+    : "#22c55e";
 
 });
 
@@ -649,15 +638,29 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
 fetch("{{ url_for('static', filename='json/top1.json') }}")
 
-.then(response => response.json())
+.then(res=>res.json())
 
-.then(data => {
+.then(data=>{
 
     allStates = data;
 
-    showStates('ALL');
+    showStates("ALL");
 
 });
+
+/* BRANCHES */
+
+fetch("{{ url_for('static', filename='json/top2.json') }}")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+    allBranches = data;
+
+});
+
+/* SHOW STATES */
 
 function showStates(zone){
 
@@ -671,10 +674,10 @@ function showStates(zone){
 
     let filtered = [];
 
-    if(zone === 'ALL'){
+    if(zone === "ALL"){
 
         title.innerText =
-        'Overall State Rankings';
+        "Overall State Rankings";
 
         filtered = [...allStates];
 
@@ -682,10 +685,11 @@ function showStates(zone){
     else{
 
         title.innerText =
-        zone + ' Zone State Rankings';
+        zone + " Zone Rankings";
 
-        filtered = allStates.filter(item =>
-            item.Zone === zone
+        filtered =
+        allStates.filter(x =>
+            x.Zone === zone
         );
 
     }
@@ -696,37 +700,30 @@ function showStates(zone){
         parseInt(a.Percentage)
     );
 
-    const totalStates = filtered.length;
-
-    const goodStates =
-    filtered.filter(item =>
-        parseInt(item.Percentage) >= 70
-    ).length;
-
-    const badStates =
-    filtered.filter(item =>
-        parseInt(item.Percentage) < 70
-    ).length;
-
     document.getElementById("totalStates").innerText =
-    totalStates;
+    filtered.length;
 
     document.getElementById("goodStates").innerText =
-    goodStates;
+    filtered.filter(x =>
+        parseInt(x.Percentage) >= 70
+    ).length;
 
     document.getElementById("badStates").innerText =
-    badStates;
+    filtered.filter(x =>
+        parseInt(x.Percentage) < 70
+    ).length;
 
     filtered.forEach((item,index)=>{
 
         const color =
         parseInt(item.Percentage) < 70
-        ? '#ff4d4d'
-        : '#22c55e';
+        ? "#ff4d4d"
+        : "#22c55e";
 
         list.innerHTML += `
 
-        <div class="state-card">
+        <div class="state-card"
+        onclick="showBranches('${item.Row_Labels}')">
 
             <div class="state-left">
 
@@ -747,8 +744,10 @@ function showStates(zone){
             <div class="state-right">
 
                 <div class="state-percent"
-                style="color:${color}">
+                style="color:${color};">
+
                     ${item.Percentage}
+
                 </div>
 
                 <div class="state-data">
@@ -760,6 +759,85 @@ function showStates(zone){
 
                     OUT :
                     ${item.Sum_of_Total_Outwards.toLocaleString()}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+/* SHOW BRANCHES */
+
+function showBranches(stateName){
+
+    const branchTitle =
+    document.getElementById("branchTitle");
+
+    const branchList =
+    document.getElementById("branchList");
+
+    branchTitle.innerText =
+    stateName + " Branch Details";
+
+    branchList.innerHTML = "";
+
+    const filtered =
+    allBranches.filter(x =>
+        x.State === stateName
+    );
+
+    filtered.forEach((item)=>{
+
+        const percent =
+        Math.round(
+            (item["0_3"] / item.Total_Outwards) * 100
+        );
+
+        const color =
+        percent < 70
+        ? "#ff4d4d"
+        : "#22c55e";
+
+        branchList.innerHTML += `
+
+        <div class="branch-card">
+
+            <div class="branch-left">
+
+                <div class="branch-name">
+                    ${item.Location}
+                </div>
+
+                <div class="branch-zone">
+                    ${item.Zone}
+                </div>
+
+            </div>
+
+            <div class="branch-right">
+
+                <div class="branch-percent"
+                style="color:${color};">
+
+                    ${percent}%
+
+                </div>
+
+                <div class="branch-data">
+
+                    0-3 :
+                    ${item["0_3"].toLocaleString()}
+
+                    <br>
+
+                    OUT :
+                    ${item.Total_Outwards.toLocaleString()}
 
                 </div>
 
