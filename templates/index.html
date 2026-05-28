@@ -344,8 +344,6 @@ body{
 
 <body>
 
-<!-- HEADER -->
-
 <div class="header">
 
     <div class="header-top">
@@ -368,18 +366,12 @@ body{
 
 </div>
 
-<!-- TITLE -->
-
 <div class="top-title">
     Top Performing Zones
 </div>
 
-<!-- ZONES -->
-
 <div class="zone-container" id="zoneContainer">
 </div>
-
-<!-- OVERALL SUMMARY -->
 
 <div class="summary">
 
@@ -439,8 +431,6 @@ body{
 
 </div>
 
-<!-- STATE SECTION -->
-
 <div class="state-section">
 
     <div class="state-header">
@@ -455,8 +445,6 @@ body{
         </button>
 
     </div>
-
-    <!-- STATUS COUNT -->
 
     <div class="status-summary">
 
@@ -503,8 +491,6 @@ body{
 
     </div>
 
-    <!-- STATE LIST -->
-
     <div class="state-list" id="stateList">
 
     </div>
@@ -543,11 +529,7 @@ function getOrdinal(n){
 }
 
 document.getElementById("currentDate").innerText =
-
 `${day}${getOrdinal(day)} ${month}`;
-
-
-/* GLOBAL */
 
 let allStates = [];
 
@@ -560,12 +542,10 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 .then(data => {
 
     const ranks = [
-
         "🥇1",
         "🥈2",
         "🥉3",
         "🏅4"
-
     ];
 
     const container =
@@ -576,13 +556,9 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     .filter(([key]) => key !== "Grand_Total")
 
     .sort((a,b)=>
-
         parseInt(b[1].Percentage)
-
         -
-
         parseInt(a[1].Percentage)
-
     );
 
     zones.forEach((zone,index)=>{
@@ -592,12 +568,9 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
         const details = zone[1];
 
         const percentColor =
-
         parseInt(details.Percentage) < 70
-
         ? "#ff4d4d"
-
-        : "#ffffff";
+        : "#22c55e";
 
         container.innerHTML += `
 
@@ -648,11 +621,9 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     });
 
     document.getElementById("total03").innerText =
-
     data.Grand_Total.Sum_of_0_3.toLocaleString();
 
     document.getElementById("totalOutwards").innerText =
-
     data.Grand_Total.Sum_of_Total_Outwards.toLocaleString();
 
     const overall =
@@ -668,14 +639,13 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     }
     else{
 
-        overall.style.color = "#ffffff";
+        overall.style.color = "#22c55e";
 
     }
 
 });
 
-
-/* STATES JSON */
+/* STATES */
 
 fetch("{{ url_for('static', filename='json/top1.json') }}")
 
@@ -688,9 +658,6 @@ fetch("{{ url_for('static', filename='json/top1.json') }}")
     showStates('ALL');
 
 });
-
-
-/* SHOW STATES */
 
 function showStates(zone){
 
@@ -729,8 +696,6 @@ function showStates(zone){
         parseInt(a.Percentage)
     );
 
-    /* COUNTS */
-
     const totalStates = filtered.length;
 
     const goodStates =
@@ -752,14 +717,12 @@ function showStates(zone){
     document.getElementById("badStates").innerText =
     badStates;
 
-    /* STATE LIST */
-
     filtered.forEach((item,index)=>{
 
         const color =
         parseInt(item.Percentage) < 70
         ? '#ff4d4d'
-        : '#ffffff';
+        : '#22c55e';
 
         list.innerHTML += `
 
