@@ -7,110 +7,256 @@
 
 <title>Zebronics ASP Dashboard</title>
 
-<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<style>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.header{
+    padding:25px 20px 10px;
+}
+
+.header h1{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.header p{
+    margin-top:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+/* TOP SECTION */
+
+.top-title{
+    padding:15px 20px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* CARD CONTAINER */
+
+.zone-container{
+    display:flex;
+    overflow-x:auto;
+    gap:18px;
+    padding:20px;
+}
+
+.zone-container::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD */
+
+.zone-card{
+    min-width:280px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+    position:relative;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.zone-card:hover{
+    transform:translateY(-5px);
+}
+
+/* RANK */
+
+.rank{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:white;
+    color:black;
+    padding:8px 14px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* ZONE */
+
+.zone-name{
+    font-size:36px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+/* PERCENT */
+
+.percent{
+    font-size:62px;
+    font-weight:bold;
+    margin-top:18px;
+    color:#22c55e;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:20px;
+}
+
+.stat-line{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    color:#e2e8f0;
+    font-size:15px;
+}
+
+/* SUMMARY */
+
+.summary{
+    margin:20px;
+    background:rgba(255,255,255,0.08);
+    border-radius:25px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.summary h2{
+    margin-bottom:20px;
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.box{
+    background:rgba(255,255,255,0.08);
+    padding:18px;
+    border-radius:18px;
+}
+
+.box-title{
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+.box-value{
+    margin-top:10px;
+    font-size:32px;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .zone-card{
+        min-width:240px;
+    }
+
+    .zone-name{
+        font-size:30px;
+    }
+
+    .percent{
+        font-size:48px;
+    }
+
+    .box-value{
+        font-size:24px;
+    }
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <div class="header">
 
-    <div class="header-left">
+    <h1>ZEBRONICS ASP</h1>
 
-        <h1>ZEBRONICS ASP</h1>
-
-        <p>
-            Service Performance Monitoring Dashboard
-        </p>
-
-    </div>
+    <p>
+        Zone Performance Dashboard
+    </p>
 
 </div>
 
-<!-- MAIN -->
+<div class="top-title">
 
-<div class="main-container">
+    Top Performing Zones
 
-    <!-- TITLE -->
+</div>
 
-    <div class="section-title">
+<div class="zone-container" id="zoneContainer">
 
-        Top Zone Performance
+</div>
 
-    </div>
+<div class="summary">
 
-    <!-- ZONE CARDS -->
+    <h2>Overall Performance</h2>
 
-    <div class="zone-container" id="zoneContainer">
+    <div class="summary-grid">
 
-        <div class="loading">
-            Loading Dashboard...
-        </div>
+        <div class="box">
 
-    </div>
+            <div class="box-title">
+                Total 0-3 Days
+            </div>
 
-    <!-- OVERVIEW -->
-
-    <div class="overview-card">
-
-        <div class="overview-header">
-
-            Overall Summary
+            <div class="box-value" id="total03">
+                0
+            </div>
 
         </div>
 
-        <div class="overview-grid">
+        <div class="box">
 
-            <div class="summary-box">
-
-                <div class="summary-title">
-                    Total 0-3 Days
-                </div>
-
-                <div class="summary-value" id="total03">
-                    0
-                </div>
-
+            <div class="box-title">
+                Total Outwards
             </div>
 
-            <div class="summary-box">
-
-                <div class="summary-title">
-                    Total Outwards
-                </div>
-
-                <div class="summary-value" id="totalOutwards">
-                    0
-                </div>
-
+            <div class="box-value" id="totalOutwards">
+                0
             </div>
 
-            <div class="summary-box">
+        </div>
 
-                <div class="summary-title">
-                    Overall %
-                </div>
+        <div class="box">
 
-                <div class="summary-value" id="overallPercent">
-                    0%
-                </div>
-
+            <div class="box-title">
+                Overall %
             </div>
 
-            <div class="summary-box">
+            <div class="box-value" id="overallPercent">
+                0%
+            </div>
 
-                <div class="summary-title">
-                    Total Zones
-                </div>
+        </div>
 
-                <div class="summary-value">
-                    4
-                </div>
+        <div class="box">
 
+            <div class="box-title">
+                Active Zones
+            </div>
+
+            <div class="box-value">
+                4
             </div>
 
         </div>
@@ -119,20 +265,113 @@
 
 </div>
 
-<!-- FLOAT WHATSAPP -->
+<script>
 
-<a
-class="whatsapp-btn"
-href="https://wa.me/919999999999"
-target="_blank">
+fetch("{{ url_for('static', filename='json/top.json') }}")
 
-💬
+.then(response => response.json())
 
-</a>
+.then(data => {
 
-<!-- JS -->
+    const ranks = [
 
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        "🥇 1st",
+        "🥈 2nd",
+        "🥉 3rd",
+        "🏅 4th"
+
+    ];
+
+    const container =
+    document.getElementById("zoneContainer");
+
+    /* SORT ZONES */
+
+    const zones = Object.entries(data)
+
+    .filter(([key]) => key !== "Grand_Total")
+
+    .sort((a,b)=>
+
+        parseInt(b[1].Percentage)
+
+        -
+
+        parseInt(a[1].Percentage)
+
+    );
+
+    /* CREATE CARDS */
+
+    zones.forEach((zone,index)=>{
+
+        const name = zone[0];
+
+        const details = zone[1];
+
+        container.innerHTML += `
+
+        <div class="zone-card">
+
+            <div class="rank">
+                ${ranks[index]}
+            </div>
+
+            <div class="zone-name">
+                ${name}
+            </div>
+
+            <div class="percent">
+                ${details.Percentage}
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-line">
+
+                    <span>0-3 Days</span>
+
+                    <b>
+                    ${details.Sum_of_0_3.toLocaleString()}
+                    </b>
+
+                </div>
+
+                <div class="stat-line">
+
+                    <span>Total Outwards</span>
+
+                    <b>
+                    ${details.Sum_of_Total_Outwards.toLocaleString()}
+                    </b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    /* SUMMARY */
+
+    document.getElementById("total03").innerText =
+
+    data.Grand_Total.Sum_of_0_3.toLocaleString();
+
+    document.getElementById("totalOutwards").innerText =
+
+    data.Grand_Total.Sum_of_Total_Outwards.toLocaleString();
+
+    document.getElementById("overallPercent").innerText =
+
+    data.Grand_Total.Percentage;
+
+});
+
+</script>
 
 </body>
 </html>
