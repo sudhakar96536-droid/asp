@@ -25,162 +25,141 @@ body{
 /* HEADER */
 
 .header{
-    padding:20px 15px 10px;
+    padding:15px 10px 5px;
 }
 
 .header h1{
-    font-size:28px;
+    font-size:24px;
     font-weight:bold;
 }
 
 .header p{
-    margin-top:5px;
+    font-size:11px;
     color:#cbd5e1;
-    font-size:13px;
+    margin-top:4px;
 }
 
 /* TITLE */
 
 .top-title{
-    padding:10px 15px;
-    font-size:20px;
+    padding:10px;
+    font-size:18px;
     font-weight:bold;
 }
 
-/* ZONE CONTAINER */
+/* ZONE GRID */
 
 .zone-container{
-    display:flex;
-    overflow-x:auto;
-    gap:12px;
-    padding:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    padding:10px;
 }
 
-.zone-container::-webkit-scrollbar{
-    display:none;
-}
-
-/* SMALL CARDS */
+/* CARD */
 
 .zone-card{
-    min-width:190px;
-    max-width:190px;
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border-radius:18px;
-    padding:16px;
+    border-radius:14px;
+    padding:10px;
     position:relative;
-    border:1px solid rgba(255,255,255,0.1);
-    transition:0.3s;
-    flex-shrink:0;
-}
-
-.zone-card:hover{
-    transform:translateY(-4px);
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 /* RANK */
 
 .rank{
     position:absolute;
-    top:10px;
-    right:10px;
+    top:6px;
+    right:6px;
     background:white;
     color:black;
-    padding:5px 10px;
-    border-radius:30px;
-    font-size:11px;
+    padding:3px 6px;
+    border-radius:20px;
+    font-size:8px;
     font-weight:bold;
 }
 
 /* ZONE */
 
 .zone-name{
-    font-size:24px;
+    font-size:16px;
     font-weight:bold;
-    margin-top:10px;
+    margin-top:12px;
 }
 
 /* PERCENT */
 
 .percent{
-    font-size:38px;
+    font-size:24px;
     font-weight:bold;
-    margin-top:12px;
+    margin-top:10px;
     color:#22c55e;
 }
 
 /* STATS */
 
 .stats{
-    margin-top:15px;
+    margin-top:10px;
 }
 
 .stat-line{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
+    margin-top:8px;
+    font-size:9px;
     color:#e2e8f0;
-    font-size:12px;
 }
 
 /* SUMMARY */
 
 .summary{
-    margin:15px;
+    margin:10px;
     background:rgba(255,255,255,0.08);
-    border-radius:20px;
-    padding:18px;
-    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:15px;
 }
 
 .summary h2{
+    font-size:18px;
     margin-bottom:15px;
-    font-size:20px;
 }
 
 .summary-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:10px;
 }
 
 .box{
     background:rgba(255,255,255,0.08);
-    padding:15px;
-    border-radius:15px;
+    padding:12px;
+    border-radius:12px;
 }
 
 .box-title{
+    font-size:10px;
     color:#cbd5e1;
-    font-size:12px;
 }
 
 .box-value{
-    margin-top:8px;
-    font-size:24px;
+    font-size:18px;
     font-weight:bold;
+    margin-top:6px;
 }
 
 /* MOBILE */
 
 @media(max-width:600px){
 
-    .zone-card{
-        min-width:160px;
-        max-width:160px;
-    }
-
     .zone-name{
-        font-size:20px;
+        font-size:13px;
     }
 
     .percent{
-        font-size:30px;
+        font-size:18px;
     }
 
-    .box-value{
-        font-size:22px;
+    .stat-line{
+        font-size:8px;
     }
 
 }
@@ -190,8 +169,6 @@ body{
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <div class="header">
 
@@ -203,21 +180,15 @@ body{
 
 </div>
 
-<!-- TITLE -->
-
 <div class="top-title">
 
     Top Performing Zones
 
 </div>
 
-<!-- ZONES -->
-
 <div class="zone-container" id="zoneContainer">
 
 </div>
-
-<!-- SUMMARY -->
 
 <div class="summary">
 
@@ -287,17 +258,15 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     const ranks = [
 
-        "🥇 1st",
-        "🥈 2nd",
-        "🥉 3rd",
-        "🏅 4th"
+        "🥇1",
+        "🥈2",
+        "🥉3",
+        "🏅4"
 
     ];
 
     const container =
     document.getElementById("zoneContainer");
-
-    /* SORT */
 
     const zones = Object.entries(data)
 
@@ -312,8 +281,6 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
         parseInt(a[1].Percentage)
 
     );
-
-    /* CARDS */
 
     zones.forEach((zone,index)=>{
 
@@ -341,8 +308,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
                 <div class="stat-line">
 
-                    <span>0-3 Days</span>
-
+                    0-3 :
                     <b>
                     ${details.Sum_of_0_3.toLocaleString()}
                     </b>
@@ -351,8 +317,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
                 <div class="stat-line">
 
-                    <span>Outwards</span>
-
+                    OUT :
                     <b>
                     ${details.Sum_of_Total_Outwards.toLocaleString()}
                     </b>
@@ -366,8 +331,6 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
         `;
 
     });
-
-    /* SUMMARY */
 
     document.getElementById("total03").innerText =
 
