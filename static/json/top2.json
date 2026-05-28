@@ -208,5 +208,803 @@
     "Total_Outwards": 993,
     "Zone": "South",
     "State": "KERALA"
+  },
+  {
+    "Location": "CANNING ASP",
+    "0_3": 6,
+    "Total_Outwards": 10,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "CHANDIGARH",
+    "0_3": 260,
+    "Total_Outwards": 364,
+    "Zone": "North",
+    "State": "PUNJAB"
+  },
+  {
+    "Location": "CHENNAI MOUNT ROAD",
+    "0_3": 1888,
+    "Total_Outwards": 2419,
+    "Zone": "South",
+    "State": "CHENNAI CENTERS"
+  },
+  {
+    "Location": "CHHINDWARA",
+    "0_3": 42,
+    "Total_Outwards": 67,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "COCHIN ZONAL HUB",
+    "0_3": 641,
+    "Total_Outwards": 875,
+    "Zone": "South",
+    "State": "KERALA"
+  },
+  {
+    "Location": "COIMBATORE",
+    "0_3": 381,
+    "Total_Outwards": 659,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "COOCH BEHAR ASP NEW",
+    "0_3": 37,
+    "Total_Outwards": 81,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "CUTTACK",
+    "0_3": 76,
+    "Total_Outwards": 178,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "DALTONGANJ ASP",
+    "0_3": 10,
+    "Total_Outwards": 14,
+    "Zone": "East",
+    "State": "JHARKHAND"
+  },
+  {
+    "Location": "DEHRADUN ZONAL HUB",
+    "0_3": 469,
+    "Total_Outwards": 584,
+    "Zone": "North",
+    "State": "UTTARAKHAND"
+  },
+  {
+    "Location": "DELHI ZONAL HUB",
+    "0_3": 1524,
+    "Total_Outwards": 1760,
+    "Zone": "North",
+    "State": "DELHI"
+  },
+  {
+    "Location": "DHANBAD",
+    "0_3": 70,
+    "Total_Outwards": 201,
+    "Zone": "East",
+    "State": "JHARKHAND"
+  },
+  {
+    "Location": "DURGAPUR",
+    "0_3": 152,
+    "Total_Outwards": 200,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "GANGANAGAR ASP NEW",
+    "0_3": 121,
+    "Total_Outwards": 283,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "GAYA",
+    "0_3": 393,
+    "Total_Outwards": 457,
+    "Zone": "East",
+    "State": "BIHAR"
+  },
+  {
+    "Location": "GHAZIABAD RAJBAGH",
+    "0_3": 367,
+    "Total_Outwards": 467,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "GHAZIABAD ZONAL HUB",
+    "0_3": 301,
+    "Total_Outwards": 326,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "GORAKHPUR",
+    "0_3": 475,
+    "Total_Outwards": 573,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "GULBARGA NEW ASP",
+    "0_3": 17,
+    "Total_Outwards": 87,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "GURGAON",
+    "0_3": 241,
+    "Total_Outwards": 329,
+    "Zone": "North",
+    "State": "HARYANA"
+  },
+  {
+    "Location": "GUWAHATI ZONAL HUB",
+    "0_3": 266,
+    "Total_Outwards": 392,
+    "Zone": "East",
+    "State": "ASSAM"
+  },
+  {
+    "Location": "GWALIOR ASP NEW",
+    "0_3": 351,
+    "Total_Outwards": 563,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "HALDWANI",
+    "0_3": 178,
+    "Total_Outwards": 247,
+    "Zone": "North",
+    "State": "UTTARAKHAND"
+  },
+  {
+    "Location": "HARIDWAR ASP NEW",
+    "0_3": 59,
+    "Total_Outwards": 92,
+    "Zone": "North",
+    "State": "UTTARAKHAND"
+  },
+  {
+    "Location": "HEAD OFFICE (Main Service Center)",
+    "0_3": 196,
+    "Total_Outwards": 311,
+    "Zone": "South",
+    "State": "CHENNAI CENTERS"
+  },
+  {
+    "Location": "HISAR",
+    "0_3": 155,
+    "Total_Outwards": 219,
+    "Zone": "North",
+    "State": "HARYANA"
+  },
+  {
+    "Location": "HUBLI",
+    "0_3": 228,
+    "Total_Outwards": 354,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "IMPHAL ASP",
+    "0_3": 4,
+    "Total_Outwards": 19,
+    "Zone": "East",
+    "State": "ASSAM"
+  },
+  {
+    "Location": "INDORE ZONAL HUB",
+    "0_3": 791,
+    "Total_Outwards": 1505,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "JABALPUR",
+    "0_3": 783,
+    "Total_Outwards": 1021,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "JAIPUR ZONAL HUB",
+    "0_3": 1676,
+    "Total_Outwards": 2083,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "JALANDHAR",
+    "0_3": 113,
+    "Total_Outwards": 167,
+    "Zone": "North",
+    "State": "PUNJAB"
+  },
+  {
+    "Location": "JALGAON ASP NEW",
+    "0_3": 6,
+    "Total_Outwards": 28,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "JAMMU ZONAL HUB",
+    "0_3": 255,
+    "Total_Outwards": 338,
+    "Zone": "North",
+    "State": "JAMMU AND KASHMIR"
+  },
+  {
+    "Location": "JAMSHEDPUR",
+    "0_3": 92,
+    "Total_Outwards": 146,
+    "Zone": "East",
+    "State": "JHARKHAND"
+  },
+  {
+    "Location": "JANAKPURI",
+    "0_3": 392,
+    "Total_Outwards": 593,
+    "Zone": "North",
+    "State": "DELHI"
+  },
+  {
+    "Location": "JHANSI ASP NEW",
+    "0_3": 176,
+    "Total_Outwards": 212,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "JODHPUR",
+    "0_3": 754,
+    "Total_Outwards": 897,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "JORHAT ASP NEW",
+    "0_3": 3,
+    "Total_Outwards": 11,
+    "Zone": "East",
+    "State": "ASSAM"
+  },
+  {
+    "Location": "KADAPA ASP NEW",
+    "0_3": 10,
+    "Total_Outwards": 52,
+    "Zone": "South",
+    "State": "ANDHRA PRADESH"
+  },
+  {
+    "Location": "KALYAN",
+    "0_3": 305,
+    "Total_Outwards": 658,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "KANNUR ASP NEW",
+    "0_3": 116,
+    "Total_Outwards": 148,
+    "Zone": "South",
+    "State": "KERALA"
+  },
+  {
+    "Location": "KANPUR",
+    "0_3": 555,
+    "Total_Outwards": 704,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "KHAMMAM ASP NEW",
+    "0_3": 26,
+    "Total_Outwards": 36,
+    "Zone": "South",
+    "State": "TELANGANA"
+  },
+  {
+    "Location": "KOLHAPUR",
+    "0_3": 74,
+    "Total_Outwards": 172,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "KOLKATA ZONAL HUB",
+    "0_3": 2013,
+    "Total_Outwards": 2243,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "KOTA",
+    "0_3": 364,
+    "Total_Outwards": 518,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "KOTI ASP NEW",
+    "0_3": 27,
+    "Total_Outwards": 112,
+    "Zone": "South",
+    "State": "TELANGANA"
+  },
+  {
+    "Location": "KRISHNAGAR ASP NEW",
+    "0_3": 9,
+    "Total_Outwards": 50,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "LAXMI NAGAR",
+    "0_3": 580,
+    "Total_Outwards": 669,
+    "Zone": "North",
+    "State": "DELHI"
+  },
+  {
+    "Location": "LUCKNOW ZONAL HUB",
+    "0_3": 617,
+    "Total_Outwards": 727,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "LUDHIANA ZONAL HUB",
+    "0_3": 846,
+    "Total_Outwards": 1054,
+    "Zone": "North",
+    "State": "PUNJAB"
+  },
+  {
+    "Location": "MADURAI",
+    "0_3": 337,
+    "Total_Outwards": 648,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "MALDA",
+    "0_3": 70,
+    "Total_Outwards": 103,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "MANGALORE",
+    "0_3": 253,
+    "Total_Outwards": 406,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "MAPUSA ASP NEW",
+    "0_3": 34,
+    "Total_Outwards": 62,
+    "Zone": "West",
+    "State": "GOA"
+  },
+  {
+    "Location": "MARGAO ASP NEW",
+    "0_3": 21,
+    "Total_Outwards": 26,
+    "Zone": "West",
+    "State": "GOA"
+  },
+  {
+    "Location": "MATHURA ASP NEW",
+    "0_3": 50,
+    "Total_Outwards": 80,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "MECHEDA ASP NEW",
+    "0_3": 29,
+    "Total_Outwards": 40,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "MEDINIPUR ASP NEW",
+    "0_3": 13,
+    "Total_Outwards": 46,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "MEERUT",
+    "0_3": 331,
+    "Total_Outwards": 399,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "MORADABAD",
+    "0_3": 113,
+    "Total_Outwards": 137,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "MUMBAI ZONAL HUB",
+    "0_3": 381,
+    "Total_Outwards": 443,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "MUZAFFARNAGAR ASP NEW",
+    "0_3": 31,
+    "Total_Outwards": 88,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "MUZAFFARPUR",
+    "0_3": 212,
+    "Total_Outwards": 276,
+    "Zone": "East",
+    "State": "BIHAR"
+  },
+  {
+    "Location": "MYSORE ASP NEW",
+    "0_3": 79,
+    "Total_Outwards": 269,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "NAGPUR ZONAL HUB",
+    "0_3": 816,
+    "Total_Outwards": 1047,
+    "Zone": "West",
+    "State": "MAHARASHTRA(NAGPUR)"
+  },
+  {
+    "Location": "NANDED",
+    "0_3": 16,
+    "Total_Outwards": 42,
+    "Zone": "West",
+    "State": "MAHARASHTRA(NAGPUR)"
+  },
+  {
+    "Location": "NASHIK ASP.",
+    "0_3": 113,
+    "Total_Outwards": 244,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "NAZA LUCKNOW",
+    "0_3": 330,
+    "Total_Outwards": 396,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "NELLORE ASP NEW",
+    "0_3": 7,
+    "Total_Outwards": 30,
+    "Zone": "South",
+    "State": "ANDHRA PRADESH"
+  },
+  {
+    "Location": "NORTH REGIONAL HUB.",
+    "0_3": 265,
+    "Total_Outwards": 265,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "PANIPAT ASP NEW",
+    "0_3": 106,
+    "Total_Outwards": 205,
+    "Zone": "North",
+    "State": "HARYANA"
+  },
+  {
+    "Location": "PATIALA ASP NEW",
+    "0_3": 88,
+    "Total_Outwards": 110,
+    "Zone": "North",
+    "State": "PUNJAB"
+  },
+  {
+    "Location": "PATNA ZONAL HUB",
+    "0_3": 813,
+    "Total_Outwards": 1046,
+    "Zone": "East",
+    "State": "BIHAR"
+  },
+  {
+    "Location": "PIMPRI ASP NEW",
+    "0_3": 54,
+    "Total_Outwards": 93,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "PUDUCHERRY",
+    "0_3": 697,
+    "Total_Outwards": 948,
+    "Zone": "South",
+    "State": "PUDUCHERRY"
+  },
+  {
+    "Location": "PUNE ZONAL HUB",
+    "0_3": 1336,
+    "Total_Outwards": 1646,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "PURNIA",
+    "0_3": 126,
+    "Total_Outwards": 182,
+    "Zone": "East",
+    "State": "BIHAR"
+  },
+  {
+    "Location": "RAIPUR ZONAL HUB",
+    "0_3": 930,
+    "Total_Outwards": 1236,
+    "Zone": "West",
+    "State": "CHHATTISGARH"
+  },
+  {
+    "Location": "RAJAHMUNDRY ASP",
+    "0_3": 13,
+    "Total_Outwards": 47,
+    "Zone": "South",
+    "State": "ANDHRA PRADESH"
+  },
+  {
+    "Location": "RAJKOT",
+    "0_3": 384,
+    "Total_Outwards": 617,
+    "Zone": "West",
+    "State": "GUJARAT"
+  },
+  {
+    "Location": "RANCHI ZONAL HUB",
+    "0_3": 316,
+    "Total_Outwards": 426,
+    "Zone": "East",
+    "State": "JHARKHAND"
+  },
+  {
+    "Location": "REWA ASP NEW.",
+    "0_3": 10,
+    "Total_Outwards": 47,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "ROHTAK ASP NEW",
+    "0_3": 116,
+    "Total_Outwards": 172,
+    "Zone": "North",
+    "State": "HARYANA"
+  },
+  {
+    "Location": "ROURKELA ASP NEW",
+    "0_3": 17,
+    "Total_Outwards": 21,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "SAGAR ASP NEW",
+    "0_3": 69,
+    "Total_Outwards": 120,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "SAHARANPUR ASP NEW",
+    "0_3": 2,
+    "Total_Outwards": 5,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "SALEM",
+    "0_3": 139,
+    "Total_Outwards": 246,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "SAMBALPUR",
+    "0_3": 31,
+    "Total_Outwards": 73,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "SAMBHAJINAGAR",
+    "0_3": 303,
+    "Total_Outwards": 495,
+    "Zone": "West",
+    "State": "MAHARASHTRA(NAGPUR)"
+  },
+  {
+    "Location": "SATNA ASP NEW",
+    "0_3": 7,
+    "Total_Outwards": 19,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "SECUNDERABAD ZONAL HUB",
+    "0_3": 690,
+    "Total_Outwards": 926,
+    "Zone": "South",
+    "State": "TELANGANA"
+  },
+  {
+    "Location": "SILCHAR ASP NEW",
+    "0_3": 19,
+    "Total_Outwards": 36,
+    "Zone": "East",
+    "State": "ASSAM"
+  },
+  {
+    "Location": "SILIGURI",
+    "0_3": 271,
+    "Total_Outwards": 360,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "SOLAPUR ASP NEW",
+    "0_3": 52,
+    "Total_Outwards": 80,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "SRINAGAR ASP NEW",
+    "0_3": 233,
+    "Total_Outwards": 340,
+    "Zone": "North",
+    "State": "JAMMU AND KASHMIR"
+  },
+  {
+    "Location": "SURAT",
+    "0_3": 589,
+    "Total_Outwards": 835,
+    "Zone": "West",
+    "State": "GUJARAT"
+  },
+  {
+    "Location": "THANE",
+    "0_3": 105,
+    "Total_Outwards": 162,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "THRISSUR",
+    "0_3": 184,
+    "Total_Outwards": 229,
+    "Zone": "South",
+    "State": "KERALA"
+  },
+  {
+    "Location": "TIRUNELVELI",
+    "0_3": 249,
+    "Total_Outwards": 385,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "TRICHY",
+    "0_3": 325,
+    "Total_Outwards": 441,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "TRIVENDRUM",
+    "0_3": 443,
+    "Total_Outwards": 577,
+    "Zone": "South",
+    "State": "KERALA"
+  },
+  {
+    "Location": "UDAIPUR",
+    "0_3": 195,
+    "Total_Outwards": 296,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "VADODARA",
+    "0_3": 174,
+    "Total_Outwards": 247,
+    "Zone": "West",
+    "State": "GUJARAT"
+  },
+  {
+    "Location": "VARANASI",
+    "0_3": 1132,
+    "Total_Outwards": 1262,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "VASAI",
+    "0_3": 183,
+    "Total_Outwards": 334,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "VASHI",
+    "0_3": 373,
+    "Total_Outwards": 460,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "VELLORE ASP NEW",
+    "0_3": 4,
+    "Total_Outwards": 27,
+    "Zone": "South",
+    "State": "TAMIL NADU (UPCOUNTRY)"
+  },
+  {
+    "Location": "VIJAYAWADA ZONAL HUB",
+    "0_3": 570,
+    "Total_Outwards": 729,
+    "Zone": "South",
+    "State": "ANDHRA PRADESH"
+  },
+  {
+    "Location": "VISAKAPATNAM",
+    "0_3": 188,
+    "Total_Outwards": 262,
+    "Zone": "South",
+    "State": "ANDHRA PRADESH"
+  },
+  {
+    "Location": "WAIDHAN ASP",
+    "0_3": 6,
+    "Total_Outwards": 31,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "WAYANAD SCP NEW",
+    "0_3": 1,
+    "Total_Outwards": 5,
+    "Zone": "South",
+    "State": "KERALA"
+  },
+  {
+    "Location": "WAZIRPUR",
+    "0_3": 371,
+    "Total_Outwards": 479,
+    "Zone": "North",
+    "State": "DELHI"
   }
 ]
