@@ -31,6 +31,8 @@ body{
     overflow-x:hidden;
 }
 
+/* HEADER */
+
 .header{
     padding:15px 10px 5px;
 }
@@ -59,11 +61,15 @@ body{
     color:white;
 }
 
+/* TITLE */
+
 .top-title{
     padding:10px;
     font-size:18px;
     font-weight:bold;
 }
+
+/* ZONE GRID */
 
 .zone-container{
     display:grid;
@@ -71,6 +77,8 @@ body{
     gap:8px;
     padding:10px;
 }
+
+/* ZONE CARD */
 
 .zone-card{
 
@@ -133,6 +141,8 @@ body{
     font-size:9px;
     color:#e5e7eb;
 }
+
+/* SUMMARY */
 
 .summary{
 
@@ -210,6 +220,36 @@ body{
     cursor:pointer;
 }
 
+/* STATUS SUMMARY */
+
+.status-summary{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.status-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+}
+
+.status-label{
+    font-size:10px;
+    color:#9ca3af;
+}
+
+.status-value{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+/* STATE LIST */
+
 .state-list{
     display:flex;
     flex-direction:column;
@@ -263,6 +303,8 @@ body{
     margin-top:4px;
 }
 
+/* MOBILE */
+
 @media(max-width:600px){
 
     .zone-name{
@@ -289,6 +331,10 @@ body{
         font-size:15px;
     }
 
+    .status-value{
+        font-size:16px;
+    }
+
 }
 
 </style>
@@ -296,6 +342,8 @@ body{
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <div class="header">
 
@@ -319,12 +367,18 @@ body{
 
 </div>
 
+<!-- TITLE -->
+
 <div class="top-title">
     Top Performing Zones
 </div>
 
+<!-- ZONES -->
+
 <div class="zone-container" id="zoneContainer">
 </div>
+
+<!-- OVERALL SUMMARY -->
 
 <div class="summary">
 
@@ -384,7 +438,7 @@ body{
 
 </div>
 
-<!-- STATE RANK SECTION -->
+<!-- STATE SECTION -->
 
 <div class="state-section">
 
@@ -401,6 +455,55 @@ body{
 
     </div>
 
+    <!-- STATUS COUNT -->
+
+    <div class="status-summary">
+
+        <div class="status-box">
+
+            <div class="status-label">
+                TOTAL STATES
+            </div>
+
+            <div class="status-value"
+            id="totalStates">
+                0
+            </div>
+
+        </div>
+
+        <div class="status-box">
+
+            <div class="status-label">
+                GOOD STATES
+            </div>
+
+            <div class="status-value"
+            id="goodStates"
+            style="color:#22c55e;">
+                0
+            </div>
+
+        </div>
+
+        <div class="status-box">
+
+            <div class="status-label">
+                BAD STATES
+            </div>
+
+            <div class="status-value"
+            id="badStates"
+            style="color:#ff4d4d;">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATE LIST -->
+
     <div class="state-list" id="stateList">
 
     </div>
@@ -409,7 +512,7 @@ body{
 
 <script>
 
-/* CURRENT DATE */
+/* DATE */
 
 const today = new Date();
 
@@ -439,12 +542,15 @@ function getOrdinal(n){
 }
 
 document.getElementById("currentDate").innerText =
+
 `${day}${getOrdinal(day)} ${month}`;
 
 
+/* GLOBAL */
+
 let allStates = [];
 
-/* LOAD TOP ZONE JSON */
+/* TOP ZONES */
 
 fetch("{{ url_for('static', filename='json/top.json') }}")
 
@@ -506,7 +612,6 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
             </div>
 
             <div class="percent"
-
             style="color:${percentColor};">
 
                 ${details.Percentage}
@@ -542,9 +647,11 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     });
 
     document.getElementById("total03").innerText =
+
     data.Grand_Total.Sum_of_0_3.toLocaleString();
 
     document.getElementById("totalOutwards").innerText =
+
     data.Grand_Total.Sum_of_Total_Outwards.toLocaleString();
 
     const overall =
@@ -566,7 +673,8 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
 });
 
-/* LOAD STATE JSON */
+
+/* STATES JSON */
 
 fetch("{{ url_for('static', filename='json/top1.json') }}")
 
@@ -579,6 +687,7 @@ fetch("{{ url_for('static', filename='json/top1.json') }}")
     showStates('ALL');
 
 });
+
 
 /* SHOW STATES */
 
@@ -618,6 +727,31 @@ function showStates(zone){
         -
         parseInt(a.Percentage)
     );
+
+    /* COUNTS */
+
+    const totalStates = filtered.length;
+
+    const goodStates =
+    filtered.filter(item =>
+        parseInt(item.Percentage) >= 70
+    ).length;
+
+    const badStates =
+    filtered.filter(item =>
+        parseInt(item.Percentage) < 70
+    ).length;
+
+    document.getElementById("totalStates").innerText =
+    totalStates;
+
+    document.getElementById("goodStates").innerText =
+    goodStates;
+
+    document.getElementById("badStates").innerText =
+    badStates;
+
+    /* LIST */
 
     filtered.forEach((item,index)=>{
 
