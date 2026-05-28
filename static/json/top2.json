@@ -1,0 +1,142 @@
+[
+  {
+    "Location": "AGARTALA ASP.",
+    "0_3": 12,
+    "Total_Outwards": 33,
+    "Zone": "East",
+    "State": "ASSAM"
+  },
+  {
+    "Location": "AGRA",
+    "0_3": 493,
+    "Total_Outwards": 581,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "AHMEDABAD ZONAL HUB",
+    "0_3": 759,
+    "Total_Outwards": 965,
+    "Zone": "West",
+    "State": "GUJARAT"
+  },
+  {
+    "Location": "AHMEDNAGAR ASP NEW",
+    "0_3": 20,
+    "Total_Outwards": 45,
+    "Zone": "West",
+    "State": "MAHARASHTRA(PUNE)"
+  },
+  {
+    "Location": "AKOLA",
+    "0_3": 57,
+    "Total_Outwards": 92,
+    "Zone": "West",
+    "State": "MAHARASHTRA(NAGPUR)"
+  },
+  {
+    "Location": "ALIGARH ASP NEW",
+    "0_3": 38,
+    "Total_Outwards": 166,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "ALLAHABAD",
+    "0_3": 795,
+    "Total_Outwards": 913,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "ALWAR ASP NEW",
+    "0_3": 93,
+    "Total_Outwards": 136,
+    "Zone": "North",
+    "State": "RAJASTHAN"
+  },
+  {
+    "Location": "AMBALA ASP NEW",
+    "0_3": 62,
+    "Total_Outwards": 146,
+    "Zone": "North",
+    "State": "HARYANA"
+  },
+  {
+    "Location": "AMBIKAPUR",
+    "0_3": 97,
+    "Total_Outwards": 142,
+    "Zone": "West",
+    "State": "CHHATTISGARH"
+  },
+  {
+    "Location": "AMRAVATI",
+    "0_3": 125,
+    "Total_Outwards": 150,
+    "Zone": "West",
+    "State": "MAHARASHTRA(NAGPUR)"
+  },
+  {
+    "Location": "AMRITSAR",
+    "0_3": 163,
+    "Total_Outwards": 224,
+    "Zone": "North",
+    "State": "PUNJAB"
+  },
+  {
+    "Location": "ANDHERI EAST",
+    "0_3": 75,
+    "Total_Outwards": 103,
+    "Zone": "West",
+    "State": "MAHARASHTRA(MUMBAI)"
+  },
+  {
+    "Location": "ASANSOL",
+    "0_3": 124,
+    "Total_Outwards": 190,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "BALASORE ASP NEW",
+    "0_3": 55,
+    "Total_Outwards": 103,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "BANDA ASP NEW",
+    "0_3": 10,
+    "Total_Outwards": 18,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(LUCKNOW)"
+  },
+  {
+    "Location": "BANGALORE ZONAL HUB",
+    "0_3": 1439,
+    "Total_Outwards": 1900,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "BARDHAMAN ASP NEW",
+    "0_3": 62,
+    "Total_Outwards": 81,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "BAREILLY",
+    "0_3": 441,
+    "Total_Outwards": 494,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "BATHINDA ASP NEW",
+    "0_3": 13,
+    "Total_Outwards": 106,
+    "Zone": "North",
+    "State": "PUNJAB"
+  }
+]
