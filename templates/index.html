@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zebronics ASP Dashboard</title>
+
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="header-left">
+
+        <h1>ZEBRONICS ASP</h1>
+
+        <p>
+            Service Performance Monitoring Dashboard
+        </p>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+    <!-- TITLE -->
+
+    <div class="section-title">
+
+        Top Zone Performance
+
+    </div>
+
+    <!-- ZONE CARDS -->
+
+    <div class="zone-container" id="zoneContainer">
+
+        <div class="loading">
+            Loading Dashboard...
+        </div>
+
+    </div>
+
+    <!-- OVERVIEW -->
+
+    <div class="overview-card">
+
+        <div class="overview-header">
+
+            Overall Summary
+
+        </div>
+
+        <div class="overview-grid">
+
+            <div class="summary-box">
+
+                <div class="summary-title">
+                    Total 0-3 Days
+                </div>
+
+                <div class="summary-value" id="total03">
+                    0
+                </div>
+
+            </div>
+
+            <div class="summary-box">
+
+                <div class="summary-title">
+                    Total Outwards
+                </div>
+
+                <div class="summary-value" id="totalOutwards">
+                    0
+                </div>
+
+            </div>
+
+            <div class="summary-box">
+
+                <div class="summary-title">
+                    Overall %
+                </div>
+
+                <div class="summary-value" id="overallPercent">
+                    0%
+                </div>
+
+            </div>
+
+            <div class="summary-box">
+
+                <div class="summary-title">
+                    Total Zones
+                </div>
+
+                <div class="summary-value">
+                    4
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FLOAT WHATSAPP -->
+
+<a
+class="whatsapp-btn"
+href="https://wa.me/919999999999"
+target="_blank">
+
+💬
+
+</a>
+
+<!-- JS -->
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
