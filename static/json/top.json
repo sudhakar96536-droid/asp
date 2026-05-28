@@ -1,0 +1,27 @@
+{
+  "East": {
+    "Sum_of_0_3": 5768,
+    "Sum_of_Total_Outwards": 7725,
+    "Percentage": "75%"
+  },
+  "North": {
+    "Sum_of_0_3": 15969,
+    "Sum_of_Total_Outwards": 20305,
+    "Percentage": "79%"
+  },
+  "South": {
+    "Sum_of_0_3": 9921,
+    "Sum_of_Total_Outwards": 14272,
+    "Percentage": "70%"
+  },
+  "West": {
+    "Sum_of_0_3": 10086,
+    "Sum_of_Total_Outwards": 14921,
+    "Percentage": "68%"
+  },
+  "Grand_Total": {
+    "Sum_of_0_3": 41744,
+    "Sum_of_Total_Outwards": 57223,
+    "Percentage": "73%"
+  }
+}
