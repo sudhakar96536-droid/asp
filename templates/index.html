@@ -16,8 +16,19 @@
     font-family:Arial,sans-serif;
 }
 
+/* ZEBRONICS STYLE BACKGROUND */
+
 body{
-    background:#0f172a;
+
+    background:
+    repeating-linear-gradient(
+        135deg,
+        #000 0px,
+        #000 18px,
+        #111 18px,
+        #111 36px
+    );
+
     color:white;
     overflow-x:hidden;
 }
@@ -39,11 +50,12 @@ body{
 .header h1{
     font-size:24px;
     font-weight:bold;
+    letter-spacing:1px;
 }
 
 .header p{
     font-size:11px;
-    color:#cbd5e1;
+    color:#d1d5db;
     margin-top:4px;
 }
 
@@ -52,7 +64,7 @@ body{
 .current-date{
     font-size:14px;
     font-weight:bold;
-    color:#facc15;
+    color:white;
 }
 
 /* TITLE */
@@ -72,14 +84,25 @@ body{
     padding:10px;
 }
 
-/* CARD */
+/* ZONE CARD */
 
 .zone-card{
-    background:rgba(255,255,255,0.08);
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.15);
+
     border-radius:14px;
+
     padding:10px;
+
     position:relative;
-    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(5px);
+
+    box-shadow:
+    0 0 10px rgba(255,255,255,0.05);
+
 }
 
 /* RANK */
@@ -121,16 +144,23 @@ body{
 .stat-line{
     margin-top:8px;
     font-size:9px;
-    color:#e2e8f0;
+    color:#e5e7eb;
 }
 
 /* SUMMARY */
 
 .summary{
+
     margin:10px;
-    background:rgba(255,255,255,0.08);
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.15);
+
     border-radius:16px;
+
     padding:15px;
+
 }
 
 .summary h2{
@@ -145,14 +175,15 @@ body{
 }
 
 .box{
-    background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.06);
     padding:12px;
     border-radius:12px;
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 .box-title{
     font-size:10px;
-    color:#cbd5e1;
+    color:#d1d5db;
 }
 
 .box-value{
@@ -178,7 +209,7 @@ body{
     }
 
     .current-date{
-        font-size:12px;
+        font-size:11px;
     }
 
 }
@@ -221,7 +252,7 @@ body{
 
 </div>
 
-<!-- ZONES -->
+<!-- ZONE CARDS -->
 
 <div class="zone-container" id="zoneContainer">
 
@@ -369,9 +400,9 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
         parseInt(details.Percentage) < 70
 
-        ? "#ef4444"
+        ? "#ff4d4d"
 
-        : "#22c55e";
+        : "#ffffff";
 
         container.innerHTML += `
 
@@ -439,12 +470,12 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     if(parseInt(data.Grand_Total.Percentage) < 70){
 
-        overall.style.color = "#ef4444";
+        overall.style.color = "#ff4d4d";
 
     }
     else{
 
-        overall.style.color = "#22c55e";
+        overall.style.color = "#ffffff";
 
     }
 
