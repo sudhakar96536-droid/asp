@@ -94,7 +94,6 @@ body{
     font-size:24px;
     font-weight:bold;
     margin-top:10px;
-    color:#22c55e;
 }
 
 /* STATS */
@@ -170,6 +169,8 @@ body{
 
 <body>
 
+<!-- HEADER -->
+
 <div class="header">
 
     <h1>ZEBRONICS ASP</h1>
@@ -180,15 +181,21 @@ body{
 
 </div>
 
+<!-- TITLE -->
+
 <div class="top-title">
 
     Top Performing Zones
 
 </div>
 
+<!-- ZONE CARDS -->
+
 <div class="zone-container" id="zoneContainer">
 
 </div>
+
+<!-- SUMMARY -->
 
 <div class="summary">
 
@@ -288,6 +295,14 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
         const details = zone[1];
 
+        const percentColor =
+
+        parseInt(details.Percentage) < 70
+
+        ? "#ef4444"
+
+        : "#22c55e";
+
         container.innerHTML += `
 
         <div class="zone-card">
@@ -300,8 +315,12 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
                 ${name}
             </div>
 
-            <div class="percent">
+            <div class="percent"
+
+            style="color:${percentColor};">
+
                 ${details.Percentage}
+
             </div>
 
             <div class="stats">
@@ -332,6 +351,8 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     });
 
+    /* SUMMARY VALUES */
+
     document.getElementById("total03").innerText =
 
     data.Grand_Total.Sum_of_0_3.toLocaleString();
@@ -340,9 +361,22 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     data.Grand_Total.Sum_of_Total_Outwards.toLocaleString();
 
-    document.getElementById("overallPercent").innerText =
+    const overall =
+    document.getElementById("overallPercent");
 
+    overall.innerText =
     data.Grand_Total.Percentage;
+
+    if(parseInt(data.Grand_Total.Percentage) < 70){
+
+        overall.style.color = "#ef4444";
+
+    }
+    else{
+
+        overall.style.color = "#22c55e";
+
+    }
 
 });
 
