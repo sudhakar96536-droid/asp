@@ -346,6 +346,11 @@ body{
     .branch-name{
         font-size:11px;
     }
+    .zone-card.active{
+    border:2px solid #22c55e;
+    box-shadow:0 0 15px rgba(34,197,94,0.4);
+    transform:scale(1.02);
+    }
 
 }
 
@@ -664,6 +669,15 @@ fetch("{{ url_for('static', filename='json/top2.json') }}")
 
 function showStates(zone){
 
+    document.querySelectorAll(".zone-card")
+    .forEach(e => e.classList.remove("active"));
+
+    if(el){
+        el.classList.add("active");
+    }
+
+    // rest of your code remains same...
+
     const list =
     document.getElementById("stateList");
 
@@ -769,6 +783,15 @@ function showStates(zone){
         `;
 
     });
+
+    setTimeout(() => {
+
+        document.querySelector(".state-section")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 100);
 
 }
 
