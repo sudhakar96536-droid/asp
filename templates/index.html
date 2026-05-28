@@ -16,8 +16,6 @@
     font-family:Arial,sans-serif;
 }
 
-/* ZEBRONICS STYLE BACKGROUND */
-
 body{
 
     background:
@@ -33,13 +31,9 @@ body{
     overflow-x:hidden;
 }
 
-/* HEADER */
-
 .header{
     padding:15px 10px 5px;
 }
-
-/* HEADER TOP */
 
 .header-top{
     display:flex;
@@ -59,15 +53,11 @@ body{
     margin-top:4px;
 }
 
-/* DATE */
-
 .current-date{
     font-size:14px;
     font-weight:bold;
     color:white;
 }
-
-/* TITLE */
 
 .top-title{
     padding:10px;
@@ -75,16 +65,12 @@ body{
     font-weight:bold;
 }
 
-/* ZONE GRID */
-
 .zone-container{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:8px;
     padding:10px;
 }
-
-/* ZONE CARD */
 
 .zone-card{
 
@@ -103,9 +89,16 @@ body{
     box-shadow:
     0 0 10px rgba(255,255,255,0.05);
 
+    cursor:pointer;
+
+    transition:0.3s;
+
 }
 
-/* RANK */
+.zone-card:hover{
+    transform:translateY(-3px);
+    border-color:white;
+}
 
 .rank{
     position:absolute;
@@ -119,23 +112,17 @@ body{
     font-weight:bold;
 }
 
-/* ZONE */
-
 .zone-name{
     font-size:16px;
     font-weight:bold;
     margin-top:12px;
 }
 
-/* PERCENT */
-
 .percent{
     font-size:24px;
     font-weight:bold;
     margin-top:10px;
 }
-
-/* STATS */
 
 .stats{
     margin-top:10px;
@@ -146,8 +133,6 @@ body{
     font-size:9px;
     color:#e5e7eb;
 }
-
-/* SUMMARY */
 
 .summary{
 
@@ -192,7 +177,91 @@ body{
     margin-top:6px;
 }
 
-/* MOBILE */
+/* STATE SECTION */
+
+.state-section{
+    margin:10px;
+    padding:15px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px;
+}
+
+.state-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.state-title{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.overall-btn{
+    background:white;
+    color:black;
+    border:none;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.state-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.state-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.state-left{
+    width:70%;
+}
+
+.state-rank{
+    font-size:10px;
+    color:#9ca3af;
+}
+
+.state-name{
+    font-size:13px;
+    font-weight:bold;
+    margin-top:3px;
+}
+
+.state-zone{
+    font-size:9px;
+    color:#9ca3af;
+    margin-top:3px;
+}
+
+.state-right{
+    text-align:right;
+}
+
+.state-percent{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.state-out{
+    font-size:9px;
+    color:#d1d5db;
+    margin-top:4px;
+}
 
 @media(max-width:600px){
 
@@ -212,6 +281,14 @@ body{
         font-size:11px;
     }
 
+    .state-name{
+        font-size:11px;
+    }
+
+    .state-percent{
+        font-size:15px;
+    }
+
 }
 
 </style>
@@ -219,8 +296,6 @@ body{
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <div class="header">
 
@@ -244,21 +319,12 @@ body{
 
 </div>
 
-<!-- TITLE -->
-
 <div class="top-title">
-
     Top Performing Zones
-
 </div>
-
-<!-- ZONE CARDS -->
 
 <div class="zone-container" id="zoneContainer">
-
 </div>
-
-<!-- SUMMARY -->
 
 <div class="summary">
 
@@ -318,6 +384,29 @@ body{
 
 </div>
 
+<!-- STATE RANK SECTION -->
+
+<div class="state-section">
+
+    <div class="state-header">
+
+        <div class="state-title" id="stateTitle">
+            Overall State Rankings
+        </div>
+
+        <button class="overall-btn"
+        onclick="showStates('ALL')">
+            OVERALL
+        </button>
+
+    </div>
+
+    <div class="state-list" id="stateList">
+
+    </div>
+
+</div>
+
 <script>
 
 /* CURRENT DATE */
@@ -333,8 +422,6 @@ const monthNames = [
 ];
 
 const month = monthNames[today.getMonth()];
-
-/* ORDINAL */
 
 function getOrdinal(n){
 
@@ -352,11 +439,12 @@ function getOrdinal(n){
 }
 
 document.getElementById("currentDate").innerText =
-
 `${day}${getOrdinal(day)} ${month}`;
 
 
-/* LOAD JSON */
+let allStates = [];
+
+/* LOAD TOP ZONE JSON */
 
 fetch("{{ url_for('static', filename='json/top.json') }}")
 
@@ -406,7 +494,8 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
         container.innerHTML += `
 
-        <div class="zone-card">
+        <div class="zone-card"
+        onclick="showStates('${name}')">
 
             <div class="rank">
                 ${ranks[index]}
@@ -452,14 +541,10 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     });
 
-    /* SUMMARY */
-
     document.getElementById("total03").innerText =
-
     data.Grand_Total.Sum_of_0_3.toLocaleString();
 
     document.getElementById("totalOutwards").innerText =
-
     data.Grand_Total.Sum_of_Total_Outwards.toLocaleString();
 
     const overall =
@@ -480,6 +565,107 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     }
 
 });
+
+/* LOAD STATE JSON */
+
+fetch("{{ url_for('static', filename='json/top1.json') }}")
+
+.then(response => response.json())
+
+.then(data => {
+
+    allStates = data;
+
+    showStates('ALL');
+
+});
+
+/* SHOW STATES */
+
+function showStates(zone){
+
+    const list =
+    document.getElementById("stateList");
+
+    const title =
+    document.getElementById("stateTitle");
+
+    list.innerHTML = "";
+
+    let filtered = [];
+
+    if(zone === 'ALL'){
+
+        title.innerText =
+        'Overall State Rankings';
+
+        filtered = [...allStates];
+
+    }
+    else{
+
+        title.innerText =
+        zone + ' Zone State Rankings';
+
+        filtered = allStates.filter(item =>
+            item.Zone === zone
+        );
+
+    }
+
+    filtered.sort((a,b)=>
+        parseInt(b.Percentage)
+        -
+        parseInt(a.Percentage)
+    );
+
+    filtered.forEach((item,index)=>{
+
+        const color =
+        parseInt(item.Percentage) < 70
+        ? '#ff4d4d'
+        : '#ffffff';
+
+        list.innerHTML += `
+
+        <div class="state-card">
+
+            <div class="state-left">
+
+                <div class="state-rank">
+                    #${index + 1}
+                </div>
+
+                <div class="state-name">
+                    ${item.Row_Labels}
+                </div>
+
+                <div class="state-zone">
+                    ${item.Zone}
+                </div>
+
+            </div>
+
+            <div class="state-right">
+
+                <div class="state-percent"
+                style="color:${color}">
+                    ${item.Percentage}
+                </div>
+
+                <div class="state-out">
+                    OUT : ${item.Sum_of_Total_Outwards.toLocaleString()}
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
 
 </script>
 
