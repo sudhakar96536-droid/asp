@@ -88,6 +88,14 @@ body{
 
     position:relative;
 
+    transition:0.3s;
+
+}
+
+.zone-card.active{
+    border:2px solid #22c55e;
+    box-shadow:0 0 15px rgba(34,197,94,0.4);
+    transform:scale(1.02);
 }
 
 .rank{
@@ -183,8 +191,6 @@ body{
     cursor:pointer;
 }
 
-/* STATUS */
-
 .status-summary{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
@@ -210,8 +216,6 @@ body{
     margin-top:5px;
 }
 
-/* STATE LIST */
-
 .state-list{
     display:flex;
     flex-direction:column;
@@ -227,6 +231,13 @@ body{
     justify-content:space-between;
     align-items:center;
     cursor:pointer;
+    transition:0.3s;
+}
+
+.state-card.active{
+    border:2px solid #22c55e;
+    box-shadow:0 0 12px rgba(34,197,94,0.35);
+    transform:scale(1.01);
 }
 
 .state-left{
@@ -326,13 +337,6 @@ body{
     margin-top:4px;
     line-height:15px;
 }
-.zone-card.active{
-border:2px solid #22c55e;
-box-shadow:0 0 15px rgba(34,197,94,0.4);
-transform:scale(1.02);
-}
-
-    
 
 /* MOBILE */
 
@@ -354,11 +358,7 @@ transform:scale(1.02);
         font-size:11px;
     }
 
-
 }
-
-
-    
 
 </style>
 
@@ -395,7 +395,6 @@ transform:scale(1.02);
     <div class="summary-grid">
 
         <div class="box">
-
             <div class="box-title">
                 Total 0-3 Days
             </div>
@@ -403,11 +402,9 @@ transform:scale(1.02);
             <div class="box-value" id="total03">
                 0
             </div>
-
         </div>
 
         <div class="box">
-
             <div class="box-title">
                 Total Outwards
             </div>
@@ -415,11 +412,9 @@ transform:scale(1.02);
             <div class="box-value" id="totalOutwards">
                 0
             </div>
-
         </div>
 
         <div class="box">
-
             <div class="box-title">
                 Overall %
             </div>
@@ -427,11 +422,9 @@ transform:scale(1.02);
             <div class="box-value" id="overallPercent">
                 0%
             </div>
-
         </div>
 
         <div class="box">
-
             <div class="box-title">
                 Active Zones
             </div>
@@ -439,7 +432,6 @@ transform:scale(1.02);
             <div class="box-value">
                 4
             </div>
-
         </div>
 
     </div>
@@ -466,7 +458,6 @@ transform:scale(1.02);
     <div class="status-summary">
 
         <div class="status-box">
-
             <div class="status-label">
                 TOTAL STATES
             </div>
@@ -474,11 +465,9 @@ transform:scale(1.02);
             <div class="status-value" id="totalStates">
                 0
             </div>
-
         </div>
 
         <div class="status-box">
-
             <div class="status-label">
                 GREEN STATES
             </div>
@@ -488,11 +477,9 @@ transform:scale(1.02);
             id="goodStates">
                 0
             </div>
-
         </div>
 
         <div class="status-box">
-
             <div class="status-label">
                 RED STATES
             </div>
@@ -502,7 +489,6 @@ transform:scale(1.02);
             id="badStates">
                 0
             </div>
-
         </div>
 
     </div>
@@ -519,9 +505,7 @@ transform:scale(1.02);
         Branch Details
     </div>
 
-    <div class="branch-list" id="branchList">
-
-    </div>
+    <div class="branch-list" id="branchList"></div>
 
 </div>
 
@@ -682,8 +666,6 @@ function showStates(zone, el){
         el.classList.add("active");
     }
 
-    // rest of your code remains same...
-
     const list =
     document.getElementById("stateList");
 
@@ -743,7 +725,7 @@ function showStates(zone, el){
         list.innerHTML += `
 
         <div class="state-card"
-        onclick="showBranches('${item.Row_Labels}')">
+        onclick="showBranches('${item.Row_Labels}', this)">
 
             <div class="state-left">
 
@@ -803,7 +785,14 @@ function showStates(zone, el){
 
 /* SHOW BRANCHES */
 
-function showBranches(stateName){
+function showBranches(stateName, el){
+
+    document.querySelectorAll(".state-card")
+    .forEach(e => e.classList.remove("active"));
+
+    if(el){
+        el.classList.add("active");
+    }
 
     const branchTitle =
     document.getElementById("branchTitle");
@@ -821,7 +810,23 @@ function showBranches(stateName){
         x.State === stateName
     );
 
-    filtered.forEach((item)=>{
+    filtered.sort((a,b)=>{
+
+        const percentA =
+        Math.round(
+            (a["0_3"] / a.Total_Outwards) * 100
+        );
+
+        const percentB =
+        Math.round(
+            (b["0_3"] / b.Total_Outwards) * 100
+        );
+
+        return percentB - percentA;
+
+    });
+
+    filtered.forEach((item,index)=>{
 
         const percent =
         Math.round(
@@ -838,6 +843,10 @@ function showBranches(stateName){
         <div class="branch-card">
 
             <div class="branch-left">
+
+                <div class="state-rank">
+                    #${index + 1}
+                </div>
 
                 <div class="branch-name">
                     ${item.Location}
@@ -878,18 +887,10 @@ function showBranches(stateName){
 
     });
 
-
-    /* AUTO SCROLL TO BRANCH SECTION */
-
     document.querySelector(".branch-section")
-
     .scrollIntoView({
-
-        behavior: "smooth"
-
+        behavior:"smooth"
     });
-
-
 
 }
 
