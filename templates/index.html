@@ -142,7 +142,7 @@ body{
     color:#e5e7eb;
 }
 
-/* SUMMARY */
+/* OVERALL SUMMARY */
 
 .summary{
 
@@ -268,7 +268,7 @@ body{
 }
 
 .state-left{
-    width:70%;
+    width:60%;
 }
 
 .state-rank{
@@ -297,10 +297,11 @@ body{
     font-weight:bold;
 }
 
-.state-out{
+.state-data{
     font-size:9px;
     color:#d1d5db;
     margin-top:4px;
+    line-height:15px;
 }
 
 /* MOBILE */
@@ -751,7 +752,7 @@ function showStates(zone){
     document.getElementById("badStates").innerText =
     badStates;
 
-    /* LIST */
+    /* STATE LIST */
 
     filtered.forEach((item,index)=>{
 
@@ -787,8 +788,16 @@ function showStates(zone){
                     ${item.Percentage}
                 </div>
 
-                <div class="state-out">
-                    OUT : ${item.Sum_of_Total_Outwards.toLocaleString()}
+                <div class="state-data">
+
+                    0-3 :
+                    ${item.Sum_of_0_3.toLocaleString()}
+
+                    <br>
+
+                    OUT :
+                    ${item.Sum_of_Total_Outwards.toLocaleString()}
+
                 </div>
 
             </div>
