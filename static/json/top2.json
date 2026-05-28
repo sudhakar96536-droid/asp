@@ -138,5 +138,75 @@
     "Total_Outwards": 106,
     "Zone": "North",
     "State": "PUNJAB"
+  },
+  {
+    "Location": "BELGAUM ASP NEW",
+    "0_3": 54,
+    "Total_Outwards": 127,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "BERHAMPORE",
+    "0_3": 54,
+    "Total_Outwards": 75,
+    "Zone": "East",
+    "State": "WEST BENGAL"
+  },
+  {
+    "Location": "BHAGALPUR ASP NEW",
+    "0_3": 3,
+    "Total_Outwards": 20,
+    "Zone": "East",
+    "State": "BIHAR"
+  },
+  {
+    "Location": "BHOPAL",
+    "0_3": 234,
+    "Total_Outwards": 487,
+    "Zone": "West",
+    "State": "MADHYA PRADESH"
+  },
+  {
+    "Location": "BHUBANESHWAR ZONAL HUB",
+    "0_3": 388,
+    "Total_Outwards": 556,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "BIJAPUR ASP NEW",
+    "0_3": 4,
+    "Total_Outwards": 24,
+    "Zone": "South",
+    "State": "KARNATAKA"
+  },
+  {
+    "Location": "BIJNOR ASP NEW",
+    "0_3": 20,
+    "Total_Outwards": 81,
+    "Zone": "North",
+    "State": "UTTAR PRADESH(GHAZIABAD)"
+  },
+  {
+    "Location": "BILASPUR",
+    "0_3": 411,
+    "Total_Outwards": 637,
+    "Zone": "West",
+    "State": "CHHATTISGARH"
+  },
+  {
+    "Location": "BRAHMAPUR ASP NEW",
+    "0_3": 22,
+    "Total_Outwards": 56,
+    "Zone": "East",
+    "State": "ODISHA"
+  },
+  {
+    "Location": "CALICUT",
+    "0_3": 715,
+    "Total_Outwards": 993,
+    "Zone": "South",
+    "State": "KERALA"
   }
 ]
