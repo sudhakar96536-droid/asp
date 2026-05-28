@@ -25,137 +25,140 @@ body{
 /* HEADER */
 
 .header{
-    padding:25px 20px 10px;
+    padding:20px 15px 10px;
 }
 
 .header h1{
-    font-size:32px;
+    font-size:28px;
     font-weight:bold;
 }
 
 .header p{
-    margin-top:8px;
+    margin-top:5px;
     color:#cbd5e1;
-    font-size:14px;
+    font-size:13px;
 }
 
-/* TOP SECTION */
+/* TITLE */
 
 .top-title{
-    padding:15px 20px;
-    font-size:24px;
+    padding:10px 15px;
+    font-size:20px;
     font-weight:bold;
 }
 
-/* CARD CONTAINER */
+/* ZONE CONTAINER */
 
 .zone-container{
     display:flex;
     overflow-x:auto;
-    gap:18px;
-    padding:20px;
+    gap:12px;
+    padding:15px;
 }
 
 .zone-container::-webkit-scrollbar{
     display:none;
 }
 
-/* CARD */
+/* SMALL CARDS */
 
 .zone-card{
-    min-width:280px;
+    min-width:190px;
+    max-width:190px;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(10px);
-    border-radius:25px;
-    padding:25px;
+    border-radius:18px;
+    padding:16px;
     position:relative;
     border:1px solid rgba(255,255,255,0.1);
     transition:0.3s;
+    flex-shrink:0;
 }
 
 .zone-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 }
 
 /* RANK */
 
 .rank{
     position:absolute;
-    top:18px;
-    right:18px;
+    top:10px;
+    right:10px;
     background:white;
     color:black;
-    padding:8px 14px;
-    border-radius:50px;
-    font-size:13px;
+    padding:5px 10px;
+    border-radius:30px;
+    font-size:11px;
     font-weight:bold;
 }
 
 /* ZONE */
 
 .zone-name{
-    font-size:36px;
+    font-size:24px;
     font-weight:bold;
-    margin-top:15px;
+    margin-top:10px;
 }
 
 /* PERCENT */
 
 .percent{
-    font-size:62px;
+    font-size:38px;
     font-weight:bold;
-    margin-top:18px;
+    margin-top:12px;
     color:#22c55e;
 }
 
 /* STATS */
 
 .stats{
-    margin-top:20px;
+    margin-top:15px;
 }
 
 .stat-line{
     display:flex;
     justify-content:space-between;
-    margin-top:15px;
+    margin-top:10px;
     color:#e2e8f0;
-    font-size:15px;
+    font-size:12px;
 }
 
 /* SUMMARY */
 
 .summary{
-    margin:20px;
+    margin:15px;
     background:rgba(255,255,255,0.08);
-    border-radius:25px;
-    padding:25px;
+    border-radius:20px;
+    padding:18px;
     border:1px solid rgba(255,255,255,0.1);
 }
 
 .summary h2{
-    margin-bottom:20px;
+    margin-bottom:15px;
+    font-size:20px;
 }
 
 .summary-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:12px;
 }
 
 .box{
     background:rgba(255,255,255,0.08);
-    padding:18px;
-    border-radius:18px;
+    padding:15px;
+    border-radius:15px;
 }
 
 .box-title{
     color:#cbd5e1;
-    font-size:13px;
+    font-size:12px;
 }
 
 .box-value{
-    margin-top:10px;
-    font-size:32px;
+    margin-top:8px;
+    font-size:24px;
     font-weight:bold;
 }
 
@@ -164,19 +167,20 @@ body{
 @media(max-width:600px){
 
     .zone-card{
-        min-width:240px;
+        min-width:160px;
+        max-width:160px;
     }
 
     .zone-name{
-        font-size:30px;
+        font-size:20px;
     }
 
     .percent{
-        font-size:48px;
+        font-size:30px;
     }
 
     .box-value{
-        font-size:24px;
+        font-size:22px;
     }
 
 }
@@ -186,6 +190,8 @@ body{
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <div class="header">
 
@@ -197,15 +203,21 @@ body{
 
 </div>
 
+<!-- TITLE -->
+
 <div class="top-title">
 
     Top Performing Zones
 
 </div>
 
+<!-- ZONES -->
+
 <div class="zone-container" id="zoneContainer">
 
 </div>
+
+<!-- SUMMARY -->
 
 <div class="summary">
 
@@ -285,7 +297,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
     const container =
     document.getElementById("zoneContainer");
 
-    /* SORT ZONES */
+    /* SORT */
 
     const zones = Object.entries(data)
 
@@ -301,7 +313,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
     );
 
-    /* CREATE CARDS */
+    /* CARDS */
 
     zones.forEach((zone,index)=>{
 
@@ -339,7 +351,7 @@ fetch("{{ url_for('static', filename='json/top.json') }}")
 
                 <div class="stat-line">
 
-                    <span>Total Outwards</span>
+                    <span>Outwards</span>
 
                     <b>
                     ${details.Sum_of_Total_Outwards.toLocaleString()}
