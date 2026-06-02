@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Verification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+.header{
+    background:#ff6600;
+    padding:18px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+.card{
+    margin:25px;
+    background:#222;
+    padding:20px;
+    border-radius:15px;
+}
+input,button{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border-radius:10px;
+    border:0;
+    font-size:16px;
+    box-sizing:border-box;
+}
+button{
+    background:#22c55e;
+    color:white;
+    font-weight:bold;
+}
+.hidden{
+    display:none;
+}
+.status{
+    margin-top:12px;
+    color:#ddd;
+    line-height:22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Employee Verification</div>
+
+<div class="card" id="mobileBox">
+    <h3>Enter Registered Mobile Number</h3>
+
+    <input type="text" id="mobile" placeholder="Example: 919710903803">
+
+    <button onclick="sendOtp()">Send WhatsApp OTP</button>
+
+    <p class="status" id="mobileStatus"></p>
+</div>
+
+<div class="card hidden" id="otpBox">
+    <h3>Enter OTP</h3>
+
+    <input type="text" id="otp" placeholder="Enter OTP">
+
+    <button onclick="verifyOtp()">Verify OTP</button>
+
+    <p class="status" id="otpStatus"></p>
+</div>
+
+<div class="card hidden" id="locationBox">
+    <h3>Location Permission Required</h3>
+
+    <p>
+        To open the dashboard, location permission is required.
+    </p>
+
+    <button onclick="askLocation()">Allow Location & Open Dashboard</button>
+
+    <p class="status" id="locationStatus"></p>
+</div>
+
+<script>
+let savedMobile = "";
+
+function sendOtp(){
+    savedMobile = document.getElementById("mobile").value.trim();
+
+    fetch("/send-otp", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({mobile:savedMobile})
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("mobileStatus").innerHTML = data.message;
+
+        if(data.success){
+            document.getElementById("otpBox").classList.remove("hidden");
+        }
+    });
+}
+
+function verifyOtp(){
+    let otp = document.getElementById("otp").value.trim();
+
+    fetch("/verify-otp", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+            mobile:savedMobile,
+            otp:otp
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("otpStatus").innerHTML = data.message;
+
+        if(data.success){
+            document.getElementById("mobileBox").classList.add("hidden");
+            document.getElementById("otpBox").classList.add("hidden");
+            document.getElementById("locationBox").classList.remove("hidden");
+
+            checkPermissionAlreadyAllowed();
+        }
+    });
+}
+
+function checkPermissionAlreadyAllowed(){
+    if(navigator.permissions){
+        navigator.permissions.query({name:"geolocation"}).then(function(result){
+            if(result.state === "granted"){
+                askLocation();
+            }
+        });
+    }
+}
+
+function askLocation(){
+    if(!navigator.geolocation){
+        document.getElementById("locationStatus").innerHTML =
+        "Location not supported in this browser.";
+        return;
+    }
+
+    document.getElementById("locationStatus").innerHTML =
+    "Requesting location permission...";
+
+    navigator.geolocation.getCurrentPosition(function(pos){
+
+        let lat = pos.coords.latitude;
+        let lng = pos.coords.longitude;
+
+        fetch("/save-location-permission", {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({
+                lat:lat,
+                lng:lng
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                window.location.href = "/";
+            }else{
+                document.getElementById("locationStatus").innerHTML =
+                data.message;
+            }
+        });
+
+    }, function(){
+        document.getElementById("locationStatus").innerHTML =
+        "Location permission denied. Please allow location to open dashboard.";
+    }, {
+        enableHighAccuracy:true,
+        maximumAge:0,
+        timeout:10000
+    });
+}
+</script>
+
+</body>
+</html>
