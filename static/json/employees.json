@@ -12,5 +12,12 @@
         "mobile": "917824027333",
         "designation": "Service",
         "active": true
+    },
+    {
+        "employee_id": "EMP003",
+        "name": "Sarath",
+        "mobile": "919884125374",
+        "designation": "Collection",
+        "active": true
     }
 ]
