@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request, jsonify, session
 import json
-import os
 import random
 import time
+import requests
+import os
 
 app = Flask(__name__)
 app.secret_key = "change_this_secret_key"
 
 EMPLOYEE_FILE = "static/json/employees.json"
+
+WHATSAPP_TOKEN = os.environ.get("WHATSAPP_TOKEN")
+PHONE_NUMBER_ID = os.environ.get("PHONE_NUMBER_ID")
 
 otps = {}
 locations = {}
@@ -29,14 +33,40 @@ def find_employee(mobile):
 def send_whatsapp_otp(mobile, otp):
     print(f"OTP for {mobile}: {otp}")
 
-    # Add your WhatsApp API here later
-    # requests.post(...)
+    if not WHATSAPP_TOKEN or not PHONE_NUMBER_ID:
+        print("WhatsApp token or phone number id missing")
+        return False
 
-    return True
+    url = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
+
+    headers = {
+        "Authorization": f"Bearer {WHATSAPP_TOKEN}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "messaging_product": "whatsapp",
+        "to": mobile,
+        "type": "text",
+        "text": {
+            "body": f"Your employee login OTP is {otp}. This OTP is valid for 5 minutes."
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+
+    print(response.status_code)
+    print(response.text)
+
+    return response.status_code in [200, 201]
 
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/employee")
+def employee():
+    return render_template("employee.html")
 
 @app.route("/send-otp", methods=["POST"])
 def send_otp():
@@ -59,7 +89,13 @@ def send_otp():
         "employee": employee
     }
 
-    send_whatsapp_otp(mobile, otp)
+    sent = send_whatsapp_otp(mobile, otp)
+
+    if not sent:
+        return jsonify({
+            "success": False,
+            "message": "OTP generated but WhatsApp sending failed. Check Render logs."
+        })
 
     return jsonify({
         "success": True,
@@ -119,6 +155,7 @@ def check_in():
         "designation": employee.get("designation", ""),
         "lat": None,
         "lng": None,
+        "accuracy": None,
         "checked_in": True,
         "checkin_time": time.time(),
         "last_update": None
@@ -126,7 +163,7 @@ def check_in():
 
     return jsonify({
         "success": True,
-        "message": "Checked in successfully."
+        "message": "Checked in successfully. Location sharing started."
     })
 
 @app.route("/update-location", methods=["POST"])
@@ -164,7 +201,10 @@ def check_out():
     employee = session.get("employee")
 
     if not employee:
-        return jsonify({"success": False})
+        return jsonify({
+            "success": False,
+            "message": "Employee not logged in"
+        })
 
     emp_id = employee["employee_id"]
 
@@ -173,7 +213,7 @@ def check_out():
 
     return jsonify({
         "success": True,
-        "message": "Checked out successfully."
+        "message": "Checked out successfully. Location sharing stopped."
     })
 
 @app.route("/admin")
