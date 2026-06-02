@@ -893,7 +893,43 @@ function showBranches(stateName, el){
     });
 
 }
+let liveWatchId = null;
 
+function startLiveLocationUpdate(){
+
+    if(!navigator.geolocation){
+        console.log("GPS not supported");
+        return;
+    }
+
+    liveWatchId = navigator.geolocation.watchPosition(function(pos){
+
+        fetch("/live-location-update", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                lat:pos.coords.latitude,
+                lng:pos.coords.longitude,
+                accuracy:pos.coords.accuracy
+            })
+        });
+
+    }, function(error){
+
+        console.log("Location update error:", error.message);
+
+    }, {
+        enableHighAccuracy:true,
+        maximumAge:0,
+        timeout:15000
+    });
+}
+
+startLiveLocationUpdate();
+
+    
 </script>
 
 </body>
