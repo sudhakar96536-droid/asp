@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Employee Check-In</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial;
+}
+
+.header{
+    background:#ff6600;
+    padding:18px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:#222;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+.send-btn{
+    background:#22c55e;
+    color:white;
+}
+
+.verify-btn{
+    background:#3b82f6;
+    color:white;
+}
+
+.checkin-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.checkout-btn{
+    background:#dc2626;
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+.status{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.employee-box{
+    background:#333;
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    Employee Attendance
+</div>
+
+<div class="container">
+
+    <!-- MOBILE -->
+
+    <div class="card">
+
+        <h3>Employee Login</h3>
+
+        <input
+        type="text"
+        id="mobile"
+        placeholder="Enter Mobile Number">
+
+        <button
+        class="send-btn"
+        onclick="sendOTP()">
+
+            Send WhatsApp OTP
+
+        </button>
+
+        <div
+        class="status"
+        id="mobileStatus"></div>
+
+    </div>
+
+    <!-- OTP -->
+
+    <div
+    class="card hidden"
+    id="otpCard">
+
+        <h3>OTP Verification</h3>
+
+        <input
+        type="text"
+        id="otp"
+        placeholder="Enter OTP">
+
+        <button
+        class="verify-btn"
+        onclick="verifyOTP()">
+
+            Verify OTP
+
+        </button>
+
+        <div
+        class="status"
+        id="otpStatus"></div>
+
+    </div>
+
+    <!-- EMPLOYEE -->
+
+    <div
+    class="card hidden"
+    id="employeeCard">
+
+        <h3>Employee Details</h3>
+
+        <div
+        class="employee-box"
+        id="employeeInfo">
+
+        </div>
+
+        <button
+        class="checkin-btn"
+        onclick="checkIn()">
+
+            CHECK IN
+
+        </button>
+
+        <button
+        class="checkout-btn"
+        onclick="checkOut()">
+
+            CHECK OUT
+
+        </button>
+
+        <div
+        class="status"
+        id="locationStatus">
+
+            Not Checked In
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let employeeMobile = "";
+let watchId = null;
+
+function sendOTP(){
+
+    employeeMobile =
+    document.getElementById("mobile").value.trim();
+
+    if(employeeMobile==""){
+        alert("Enter mobile number");
+        return;
+    }
+
+    fetch("/send-otp",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            mobile:employeeMobile
+        })
+    })
+
+    .then(r=>r.json())
+    .then(data=>{
+
+        document.getElementById(
+        "mobileStatus").innerHTML =
+        data.message;
+
+        if(data.success){
+
+            document.getElementById(
+            "otpCard").classList.remove("hidden");
+
+        }
+
+    });
+
+}
+
+function verifyOTP(){
+
+    let otp =
+    document.getElementById("otp").value.trim();
+
+    fetch("/verify-otp",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            mobile:employeeMobile,
+            otp:otp
+
+        })
+
+    })
+
+    .then(r=>r.json())
+    .then(data=>{
+
+        document.getElementById(
+        "otpStatus").innerHTML =
+        data.message;
+
+        if(data.success){
+
+            document.getElementById(
+            "employeeCard")
+            .classList.remove("hidden");
+
+            document.getElementById(
+            "employeeInfo")
+            .innerHTML =
+
+            "<b>Name:</b> "
+            + data.employee.name +
+
+            "<br><b>ID:</b> "
+            + data.employee.employee_id +
+
+            "<br><b>Mobile:</b> "
+            + data.employee.mobile +
+
+            "<br><b>Designation:</b> "
+            + data.employee.designation;
+
+        }
+
+    });
+
+}
+
+function checkIn(){
+
+    fetch("/check-in",{
+        method:"POST"
+    })
+
+    .then(r=>r.json())
+    .then(data=>{
+
+        document.getElementById(
+        "locationStatus").innerHTML =
+        data.message;
+
+        if(data.success){
+
+            startLocation();
+
+        }
+
+    });
+
+}
+
+function startLocation(){
+
+    if(!navigator.geolocation){
+
+        alert("GPS not supported");
+        return;
+
+    }
+
+    watchId =
+    navigator.geolocation.watchPosition(
+
+        function(pos){
+
+            let lat =
+            pos.coords.latitude;
+
+            let lng =
+            pos.coords.longitude;
+
+            let accuracy =
+            pos.coords.accuracy;
+
+            document.getElementById(
+            "locationStatus").innerHTML =
+
+            "Location Sharing Active<br>" +
+
+            "Lat : " + lat +
+
+            "<br>Lng : " + lng +
+
+            "<br>Accuracy : " +
+            Math.round(accuracy) + " m";
+
+            fetch("/update-location",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+
+                    lat:lat,
+                    lng:lng,
+                    accuracy:accuracy
+
+                })
+
+            });
+
+        },
+
+        function(){
+
+            alert(
+            "Location permission denied");
+
+        },
+
+        {
+            enableHighAccuracy:true,
+            maximumAge:0,
+            timeout:10000
+        }
+
+    );
+
+}
+
+function checkOut(){
+
+    if(watchId){
+
+        navigator.geolocation
+        .clearWatch(watchId);
+
+    }
+
+    fetch("/check-out",{
+        method:"POST"
+    });
+
+    document.getElementById(
+    "locationStatus").innerHTML =
+
+    "Checked Out";
+
+}
+
+</script>
+
+</body>
+</html>
