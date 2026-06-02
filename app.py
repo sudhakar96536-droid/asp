@@ -5,7 +5,7 @@ import time
 import requests
 import os
 
-app = Flask(**name**)
+app = Flask(__name__)
 app.secret_key = "change_this_secret_key"
 
 EMPLOYEE_FILE = "static/json/employees.json"
@@ -17,229 +17,201 @@ otps = {}
 verified_locations = {}
 
 def load_employees():
-with open(EMPLOYEE_FILE, "r", encoding="utf-8") as f:
-return json.load(f)
+    with open(EMPLOYEE_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 def find_employee(mobile):
-mobile = mobile.replace("+", "").strip()
+    mobile = mobile.replace("+", "").strip()
+    employees = load_employees()
 
-```
-employees = load_employees()
+    for emp in employees:
+        if emp["mobile"] == mobile and emp.get("active") == True:
+            return emp
 
-for emp in employees:
-    if emp["mobile"] == mobile and emp.get("active") == True:
-        return emp
-
-return None
-```
+    return None
 
 def send_whatsapp_otp(mobile, otp):
+    print(f"OTP for {mobile}: {otp}")
 
-```
-print(f"OTP for {mobile}: {otp}")
+    if not WHATSAPP_TOKEN or not PHONE_NUMBER_ID:
+        print("WhatsApp token or phone number id missing")
+        return False
 
-if not WHATSAPP_TOKEN or not PHONE_NUMBER_ID:
-    print("WhatsApp configuration missing")
-    return False
+    url = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
 
-url = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
-
-headers = {
-    "Authorization": f"Bearer {WHATSAPP_TOKEN}",
-    "Content-Type": "application/json"
-}
-
-payload = {
-    "messaging_product": "whatsapp",
-    "to": mobile,
-    "type": "text",
-    "text": {
-        "body": f"Your employee verification OTP is {otp}. Valid for 5 minutes."
+    headers = {
+        "Authorization": f"Bearer {WHATSAPP_TOKEN}",
+        "Content-Type": "application/json"
     }
-}
 
-response = requests.post(
-    url,
-    headers=headers,
-    json=payload
-)
+    payload = {
+        "messaging_product": "whatsapp",
+        "to": mobile,
+        "type": "text",
+        "text": {
+            "body": f"Your employee verification OTP is {otp}. Valid for 5 minutes."
+        }
+    }
 
-print(response.status_code)
-print(response.text)
+    response = requests.post(url, headers=headers, json=payload)
 
-return response.status_code in [200, 201]
-```
+    print(response.status_code)
+    print(response.text)
+
+    return response.status_code in [200, 201]
 
 @app.route("/")
 def home():
+    if session.get("verified_employee") and session.get("location_allowed"):
+        return render_template("index.html")
 
-```
-if session.get("verified_employee") and session.get("location_allowed"):
-    return render_template("index.html")
-
-return render_template("verify.html")
-```
+    return render_template("verify.html")
 
 @app.route("/send-otp", methods=["POST"])
 def send_otp():
+    data = request.get_json()
+    mobile = data.get("mobile", "").replace("+", "").strip()
 
-```
-data = request.get_json()
+    employee = find_employee(mobile)
 
-mobile = data.get("mobile", "").replace("+", "").strip()
+    if not employee:
+        return jsonify({
+            "success": False,
+            "message": "Mobile number not found in employee list."
+        })
 
-employee = find_employee(mobile)
+    otp = str(random.randint(100000, 999999))
 
-if not employee:
+    otps[mobile] = {
+        "otp": otp,
+        "time": time.time(),
+        "employee": employee
+    }
+
+    sent = send_whatsapp_otp(mobile, otp)
+
+    if not sent:
+        return jsonify({
+            "success": False,
+            "message": "OTP sending failed. Check Render logs or WhatsApp 24-hour window."
+        })
+
     return jsonify({
-        "success": False,
-        "message": "Mobile number not found in employee list."
+        "success": True,
+        "message": "OTP sent successfully."
     })
-
-otp = str(random.randint(100000, 999999))
-
-otps[mobile] = {
-    "otp": otp,
-    "time": time.time(),
-    "employee": employee
-}
-
-sent = send_whatsapp_otp(mobile, otp)
-
-if not sent:
-    return jsonify({
-        "success": False,
-        "message": "OTP sending failed."
-    })
-
-return jsonify({
-    "success": True,
-    "message": "OTP sent successfully."
-})
-```
 
 @app.route("/verify-otp", methods=["POST"])
 def verify_otp():
+    data = request.get_json()
+    mobile = data.get("mobile", "").replace("+", "").strip()
+    otp = data.get("otp", "").strip()
 
-```
-data = request.get_json()
+    saved = otps.get(mobile)
 
-mobile = data.get("mobile", "").replace("+", "").strip()
+    if not saved:
+        return jsonify({
+            "success": False,
+            "message": "OTP not found. Send OTP again."
+        })
 
-otp = data.get("otp", "").strip()
+    if time.time() - saved["time"] > 300:
+        return jsonify({
+            "success": False,
+            "message": "OTP expired."
+        })
 
-saved = otps.get(mobile)
+    if saved["otp"] != otp:
+        return jsonify({
+            "success": False,
+            "message": "Invalid OTP."
+        })
 
-if not saved:
+    session["verified_employee"] = True
+    session["employee"] = saved["employee"]
+
     return jsonify({
-        "success": False,
-        "message": "OTP not found."
+        "success": True,
+        "message": "OTP verified successfully.",
+        "employee": saved["employee"]
     })
-
-if time.time() - saved["time"] > 300:
-    return jsonify({
-        "success": False,
-        "message": "OTP expired."
-    })
-
-if saved["otp"] != otp:
-    return jsonify({
-        "success": False,
-        "message": "Invalid OTP."
-    })
-
-session["verified_employee"] = True
-session["employee"] = saved["employee"]
-
-return jsonify({
-    "success": True,
-    "message": "OTP verified successfully."
-})
-```
 
 @app.route("/save-location-permission", methods=["POST"])
 def save_location_permission():
+    if not session.get("verified_employee"):
+        return jsonify({
+            "success": False,
+            "message": "Employee not verified."
+        })
 
-```
-if not session.get("verified_employee"):
+    employee = session.get("employee")
+    data = request.get_json()
+
+    emp_id = employee["employee_id"]
+
+    session["location_allowed"] = True
+
+    verified_locations[emp_id] = {
+        "employee_id": emp_id,
+        "name": employee["name"],
+        "mobile": employee["mobile"],
+        "designation": employee.get("designation", ""),
+        "lat": data.get("lat"),
+        "lng": data.get("lng"),
+        "accuracy": data.get("accuracy"),
+        "last_update": time.time()
+    }
+
     return jsonify({
-        "success": False
+        "success": True,
+        "message": "Location permission saved."
     })
-
-employee = session.get("employee")
-
-data = request.get_json()
-
-emp_id = employee["employee_id"]
-
-session["location_allowed"] = True
-
-verified_locations[emp_id] = {
-    "employee_id": emp_id,
-    "name": employee["name"],
-    "mobile": employee["mobile"],
-    "lat": data.get("lat"),
-    "lng": data.get("lng"),
-    "accuracy": data.get("accuracy"),
-    "last_update": time.time()
-}
-
-return jsonify({
-    "success": True
-})
-```
 
 @app.route("/live-location-update", methods=["POST"])
 def live_location_update():
+    if not session.get("verified_employee") or not session.get("location_allowed"):
+        return jsonify({
+            "success": False,
+            "message": "Not verified or location not allowed."
+        })
 
-```
-if not session.get("verified_employee"):
+    employee = session.get("employee")
+    data = request.get_json()
+
+    emp_id = employee["employee_id"]
+
+    verified_locations[emp_id] = {
+        "employee_id": emp_id,
+        "name": employee["name"],
+        "mobile": employee["mobile"],
+        "designation": employee.get("designation", ""),
+        "lat": data.get("lat"),
+        "lng": data.get("lng"),
+        "accuracy": data.get("accuracy"),
+        "last_update": time.time()
+    }
+
     return jsonify({
-        "success": False
+        "success": True,
+        "message": "Live location updated."
     })
-
-if not session.get("location_allowed"):
-    return jsonify({
-        "success": False
-    })
-
-employee = session.get("employee")
-
-data = request.get_json()
-
-emp_id = employee["employee_id"]
-
-verified_locations[emp_id] = {
-    "employee_id": emp_id,
-    "name": employee["name"],
-    "mobile": employee["mobile"],
-    "lat": data.get("lat"),
-    "lng": data.get("lng"),
-    "accuracy": data.get("accuracy"),
-    "last_update": time.time()
-}
-
-return jsonify({
-    "success": True
-})
-```
 
 @app.route("/admin")
 def admin():
-return render_template("admin.html")
+    return render_template("admin.html")
 
 @app.route("/admin/verified")
 def admin_verified():
-return jsonify(verified_locations)
+    return jsonify(verified_locations)
+
+@app.route("/admin/locations")
+def admin_locations():
+    return jsonify(verified_locations)
 
 @app.route("/logout")
 def logout():
+    session.clear()
+    return redirect("/")
 
-```
-session.clear()
-
-return redirect("/")
-```
-
-if **name** == "**main**":
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
