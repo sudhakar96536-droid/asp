@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Live Location</title>
+<title>Admin Live Map</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
@@ -10,34 +10,17 @@
 body{
     margin:0;
     font-family:Arial;
-    background:#111;
-    color:white;
-}
-.header{
-    background:#ff6600;
-    padding:16px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
 }
 #map{
-    height:520px;
     width:100%;
-}
-.card{
-    background:#222;
-    margin:10px;
-    padding:12px;
-    border-radius:10px;
+    height:100vh;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Admin Live Employee Map</div>
 <div id="map"></div>
-<div id="list"></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
@@ -50,51 +33,38 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let markers = {};
 
-function loadLocations(){
-    fetch("/admin/locations")
+function loadEmployees(){
+    fetch("/admin/verified")
     .then(res => res.json())
     .then(data => {
-        let listHtml = "";
 
         Object.keys(data).forEach(empId => {
             let emp = data[empId];
 
-            if(emp.checked_in && emp.lat && emp.lng){
+            if(emp.lat && emp.lng){
 
                 let lat = emp.lat;
                 let lng = emp.lng;
 
                 if(!markers[empId]){
                     markers[empId] = L.marker([lat, lng]).addTo(map);
+
+                    markers[empId].bindTooltip(emp.name, {
+                        permanent:true,
+                        direction:"top"
+                    });
+
+                    map.setView([lat, lng], 15);
                 }else{
                     markers[empId].setLatLng([lat, lng]);
                 }
-
-                markers[empId].bindPopup(
-                    "<b>" + emp.name + "</b><br>" +
-                    emp.mobile + "<br>" +
-                    "Accuracy: " + Math.round(emp.accuracy || 0) + " meters"
-                );
-
-                listHtml += `
-                    <div class="card">
-                        <b>${emp.name}</b><br>
-                        Mobile: ${emp.mobile}<br>
-                        Designation: ${emp.designation}<br>
-                        Lat: ${lat}<br>
-                        Lng: ${lng}<br>
-                        Accuracy: ${Math.round(emp.accuracy || 0)} meters
-                    </div>
-                `;
             }
         });
-
-        document.getElementById("list").innerHTML = listHtml;
     });
 }
 
-setInterval(loadLocations, 5000);
-loadLocations();
+setInterval(loadEmployees, 3000);
+loadEmployees();
 </script>
 
 </body>
