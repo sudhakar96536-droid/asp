@@ -1,0 +1,16 @@
+[
+    {
+        "employee_id": "EMP001",
+        "name": "Sudhakar",
+        "mobile": "919710903803",
+        "designation": "Field",
+        "active": true
+    },
+    {
+        "employee_id": "EMP002",
+        "name": "Sami",
+        "mobile": "917824027333",
+        "designation": "Service",
+        "active": true
+    }
+]
