@@ -46,6 +46,9 @@ button{
     color:#ddd;
     line-height:22px;
 }
+.danger{
+    color:#ff6b6b;
+}
 </style>
 </head>
 
@@ -55,21 +58,15 @@ button{
 
 <div class="card" id="mobileBox">
     <h3>Enter Registered Mobile Number</h3>
-
     <input type="text" id="mobile" placeholder="Example: 919710903803">
-
     <button onclick="sendOtp()">Send WhatsApp OTP</button>
-
     <p class="status" id="mobileStatus"></p>
 </div>
 
 <div class="card hidden" id="otpBox">
     <h3>Enter OTP</h3>
-
     <input type="text" id="otp" placeholder="Enter OTP">
-
     <button onclick="verifyOtp()">Verify OTP</button>
-
     <p class="status" id="otpStatus"></p>
 </div>
 
@@ -77,7 +74,7 @@ button{
     <h3>Location Permission Required</h3>
 
     <p>
-        To open the dashboard, location permission is required.
+        Dashboard will open only after location permission is allowed.
     </p>
 
     <button onclick="askLocation()">Allow Location & Open Dashboard</button>
@@ -87,6 +84,7 @@ button{
 
 <script>
 let savedMobile = "";
+let otpVerified = false;
 
 function sendOtp(){
     savedMobile = document.getElementById("mobile").value.trim();
@@ -122,16 +120,21 @@ function verifyOtp(){
         document.getElementById("otpStatus").innerHTML = data.message;
 
         if(data.success){
+            otpVerified = true;
+
             document.getElementById("mobileBox").classList.add("hidden");
             document.getElementById("otpBox").classList.add("hidden");
             document.getElementById("locationBox").classList.remove("hidden");
 
-            checkPermissionAlreadyAllowed();
+            document.getElementById("locationStatus").innerHTML =
+            "OTP verified. Now location permission is required.";
+
+            checkAlreadyAllowed();
         }
     });
 }
 
-function checkPermissionAlreadyAllowed(){
+function checkAlreadyAllowed(){
     if(navigator.permissions){
         navigator.permissions.query({name:"geolocation"}).then(function(result){
             if(result.state === "granted"){
@@ -142,6 +145,12 @@ function checkPermissionAlreadyAllowed(){
 }
 
 function askLocation(){
+    if(!otpVerified){
+        document.getElementById("locationStatus").innerHTML =
+        "OTP verification required first.";
+        return;
+    }
+
     if(!navigator.geolocation){
         document.getElementById("locationStatus").innerHTML =
         "Location not supported in this browser.";
@@ -149,19 +158,21 @@ function askLocation(){
     }
 
     document.getElementById("locationStatus").innerHTML =
-    "Requesting location permission...";
+    "Please click Allow in browser location popup.";
 
     navigator.geolocation.getCurrentPosition(function(pos){
 
         let lat = pos.coords.latitude;
         let lng = pos.coords.longitude;
+        let accuracy = pos.coords.accuracy;
 
         fetch("/save-location-permission", {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
                 lat:lat,
-                lng:lng
+                lng:lng,
+                accuracy:accuracy
             })
         })
         .then(res => res.json())
@@ -174,13 +185,13 @@ function askLocation(){
             }
         });
 
-    }, function(){
+    }, function(error){
         document.getElementById("locationStatus").innerHTML =
-        "Location permission denied. Please allow location to open dashboard.";
+        "<span class='danger'>Location permission denied. Dashboard access not allowed.</span><br>Please allow location from browser settings and try again.";
     }, {
         enableHighAccuracy:true,
         maximumAge:0,
-        timeout:10000
+        timeout:15000
     });
 }
 </script>
