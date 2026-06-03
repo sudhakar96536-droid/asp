@@ -19,5 +19,19 @@
         "mobile": "919884125374",
         "designation": "Collection",
         "active": true
+    },
+    {
+        "employee_id": "EMP004",
+        "name": "Checker1",
+        "mobile": "919962812449",
+        "designation": "Collection",
+        "active": true
+    },
+    {
+        "employee_id": "EMP005",
+        "name": "Checker2",
+        "mobile": "919962188984",
+        "designation": "Collection",
+        "active": true
     }
 ]
