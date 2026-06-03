@@ -13,6 +13,9 @@ EMPLOYEE_FILE = "static/json/employees.json"
 WHATSAPP_TOKEN = os.environ.get("WHATSAPP_TOKEN")
 PHONE_NUMBER_ID = os.environ.get("PHONE_NUMBER_ID")
 
+OTP_TEMPLATE_NAME = "login_otp"
+OTP_TEMPLATE_LANGUAGE = "en"
+
 otps = {}
 verified_locations = {}
 
@@ -47,9 +50,23 @@ def send_whatsapp_otp(mobile, otp):
     payload = {
         "messaging_product": "whatsapp",
         "to": mobile,
-        "type": "text",
-        "text": {
-            "body": f"Your employee verification OTP is {otp}. Valid for 5 minutes."
+        "type": "template",
+        "template": {
+            "name": OTP_TEMPLATE_NAME,
+            "language": {
+                "code": OTP_TEMPLATE_LANGUAGE
+            },
+            "components": [
+                {
+                    "type": "body",
+                    "parameters": [
+                        {
+                            "type": "text",
+                            "text": otp
+                        }
+                    ]
+                }
+            ]
         }
     }
 
@@ -93,7 +110,7 @@ def send_otp():
     if not sent:
         return jsonify({
             "success": False,
-            "message": "OTP sending failed. Check Render logs or WhatsApp 24-hour window."
+            "message": "OTP sending failed. Check Render logs."
         })
 
     return jsonify({
