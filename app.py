@@ -236,6 +236,31 @@ def admin_verified():
 def admin_locations():
     return jsonify(verified_locations)
 
+@app.route("/live-location-update-app", methods=["POST"])
+def live_location_update_app():
+    data = request.get_json()
+
+    mobile = str(data.get("mobile", "")).replace("+", "").strip()
+    employee = find_employee(mobile)
+
+    if not employee:
+        return jsonify({"success": False, "message": "Employee not found"})
+
+    emp_id = employee["employee_id"]
+
+    verified_locations[emp_id] = {
+        "employee_id": emp_id,
+        "name": employee["name"],
+        "mobile": employee["mobile"],
+        "designation": employee.get("designation", ""),
+        "lat": data.get("lat"),
+        "lng": data.get("lng"),
+        "accuracy": data.get("accuracy"),
+        "last_update": time.time()
+    }
+
+    return jsonify({"success": True})
+    
 @app.route("/logout")
 def logout():
     session.clear()
