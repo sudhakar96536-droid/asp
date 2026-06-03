@@ -65,6 +65,17 @@ def send_whatsapp_otp(mobile, otp):
                             "text": otp
                         }
                     ]
+                },
+                {
+                    "type": "button",
+                    "sub_type": "url",
+                    "index": "0",
+                    "parameters": [
+                        {
+                            "type": "text",
+                            "text": otp
+                        }
+                    ]
                 }
             ]
         }
